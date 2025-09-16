@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>友好相机 · 星心涂鸦实验室</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="header-content">
+          <h1>友好相机 · 星心涂鸦实验室</h1>
+          <p>
+            使用友好相机捕捉美好瞬间，配合星心笔刷释放创意，并一键导出成品。
+          </p>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="panel controls" aria-label="操作面板">
+          <div class="card camera-card">
+            <div class="card-header">
+              <h2>友好相机</h2>
+              <p id="cameraStatus" role="status" aria-live="polite">
+                正在等待摄像头权限或手动启动。
+              </p>
+            </div>
+            <div class="video-shell">
+              <video
+                id="cameraPreview"
+                class="camera-video"
+                playsinline
+                autoplay
+                muted
+              ></video>
+              <div class="video-overlay" id="cameraOverlay">
+                <p>请允许浏览器访问摄像头，然后对准镜头，自信微笑 ✨</p>
+              </div>
+            </div>
+            <div class="button-group">
+              <button id="startCamera" type="button">开启相机</button>
+              <button id="capturePhoto" type="button">拍摄照片</button>
+              <button id="stopCamera" type="button">关闭相机</button>
+            </div>
+          </div>
+
+          <div class="card upload-card">
+            <div class="card-header">
+              <h2>替换照片</h2>
+              <p>无法使用相机？选择本地图片同样可以继续涂鸦创作。</p>
+            </div>
+            <label class="upload-input">
+              <span>上传 JPG 或 PNG（≤ 10 MB）</span>
+              <input id="uploadInput" type="file" accept="image/png, image/jpeg" />
+            </label>
+          </div>
+
+          <div class="card brush-card">
+            <div class="card-header">
+              <h2>星心涂鸦</h2>
+              <p>选择笔刷风格与色彩，开始在照片上描绘祝福。</p>
+            </div>
+            <div class="field-group">
+              <label for="toolSelect">笔刷模式</label>
+              <select id="toolSelect" aria-label="笔刷模式">
+                <option value="starHeart">星心（星星与爱心交替）</option>
+                <option value="freehand">自由画笔</option>
+              </select>
+            </div>
+            <div class="field-row">
+              <div class="field-group">
+                <label for="colorPicker">颜色</label>
+                <input id="colorPicker" type="color" value="#ff4b6e" />
+              </div>
+              <div class="field-group">
+                <label for="sizeSlider">粗细</label>
+                <input
+                  id="sizeSlider"
+                  type="range"
+                  min="6"
+                  max="48"
+                  step="2"
+                  value="20"
+                  aria-valuemin="6"
+                  aria-valuemax="48"
+                  aria-valuenow="20"
+                  aria-label="笔刷粗细"
+                />
+              </div>
+            </div>
+            <div class="button-group compact">
+              <button id="undoDoodle" type="button">撤销</button>
+              <button id="clearDoodle" type="button">清空涂鸦</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel canvas-panel" aria-label="画布舞台">
+          <div class="canvas-wrapper" id="canvasWrapper">
+            <canvas id="photoCanvas" aria-label="照片画布" role="img"></canvas>
+            <canvas
+              id="doodleCanvas"
+              aria-label="涂鸦画布"
+              role="presentation"
+            ></canvas>
+            <div class="canvas-placeholder" id="canvasPlaceholder">
+              <p>
+                先拍一张照片或上传图片，再用星星和爱心点亮画面吧！
+              </p>
+            </div>
+          </div>
+          <div class="canvas-actions">
+            <button id="exportImage" type="button">导出 PNG</button>
+            <p class="hint-text">
+              小提示：在触屏设备上也可以直接用手指绘制；长按导出图片即可分享。
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <p>
+          Made with ♥ for 事件驱动的庆祝时刻 — 欢迎继续扩展更多节日主题。
+        </p>
+      </footer>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
