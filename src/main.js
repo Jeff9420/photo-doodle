@@ -2449,3 +2449,43 @@ function clamp(value, min, max) {
 }
 
 init();
+
+// --- Camera-free overrides and safe guards ---
+// In the new flow we only support photo upload; camera APIs are no-ops.
+function isCameraSupported() {
+  return false;
+}
+function updateCameraControls() {
+  if (elements && elements.startCamera) elements.startCamera.disabled = true;
+  if (elements && elements.capturePhoto) elements.capturePhoto.disabled = true;
+  if (elements && elements.stopCamera) elements.stopCamera.disabled = true;
+}
+async function startCamera() {
+  announce('当前版本仅支持上传照片进行创作');
+  return Promise.resolve();
+}
+function stopCamera() {}
+function playVideo() {}
+function capturePhoto() {}
+
+// Announce/overlay fallbacks when camera UI is absent
+function announce(message) {
+  try {
+    if (elements && elements.authMessage) {
+      elements.authMessage.textContent = String(message);
+    }
+  } catch {}
+}
+function hideOverlay() {
+  try {
+    if (elements && elements.overlay) elements.overlay.classList.add('hidden');
+  } catch {}
+}
+function showOverlay(message) {
+  try {
+    if (elements && elements.overlay) {
+      elements.overlay.innerHTML = `<p>${String(message)}</p>`;
+      elements.overlay.classList.remove('hidden');
+    }
+  } catch {}
+}
