@@ -468,7 +468,7 @@ function init() {
   updateTextButton();
   updatePlaceholder();
   updatePanStateClasses();
-  announce('请登录后开启相机或上传照片。');
+  announce('请先上传一张照片开始创作。');
 }
 
 function configureCanvases() {
@@ -487,87 +487,65 @@ function configureCanvases() {
 }
 
 function bindEvents() {
-  });
+  // Upload
   elements.uploadInput.addEventListener('change', handleUpload);
 
+  // Tool selectors
   elements.toolButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      if (!ensureAuthenticated()) {
-        return;
-      }
+      if (!ensureAuthenticated()) return;
       setTool(button.dataset.tool);
     });
   });
-
   elements.colorButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      if (!ensureAuthenticated()) {
-        return;
-      }
+      if (!ensureAuthenticated()) return;
       setColor(button.dataset.color);
     });
   });
-
   elements.sizeButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      if (!ensureAuthenticated()) {
-        return;
-      }
+      if (!ensureAuthenticated()) return;
       setSize(Number(button.dataset.size));
     });
   });
 
+  // Edit actions
   elements.undoButton.addEventListener('click', () => {
-    if (!ensureAuthenticated()) {
-      return;
-    }
+    if (!ensureAuthenticated()) return;
     undoDoodle();
   });
-
   elements.clearButton.addEventListener('click', () => {
-    if (!ensureAuthenticated()) {
-      return;
-    }
+    if (!ensureAuthenticated()) return;
     clearDoodle();
   });
-
   elements.exportButton.addEventListener('click', () => {
-    if (!ensureAuthenticated()) {
-      return;
-    }
+    if (!ensureAuthenticated()) return;
     exportImage();
   });
-
   elements.placeText.addEventListener('click', prepareTextPlacement);
 
+  // Stickers
   elements.stickerTabs.forEach((tab) => {
     tab.addEventListener('click', () => {
-      if (!ensureAuthenticated()) {
-        return;
-      }
+      if (!ensureAuthenticated()) return;
       state.stickerCategory = tab.dataset.stickerCategory;
       updateStickerCategory();
       renderStickerList();
       exitStickerMode(true);
     });
   });
-
   elements.stickerSize.addEventListener('input', (event) => {
     state.stickerSize = Number(event.target.value);
   });
-
   elements.exitStickerMode.addEventListener('click', () => {
     exitStickerMode();
   });
 
+  // Auth
   elements.authForm.addEventListener('submit', handleAuthSubmit);
-  elements.authToggle.addEventListener('click', () => {
-    toggleAuthMode();
-  });
-  elements.authSignOut.addEventListener('click', () => {
-    signOut();
-  });
-
+  elements.authToggle.addEventListener('click', toggleAuthMode);
+  elements.authSignOut.addEventListener('click', signOut);
   elements.socialButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const provider = button.dataset.provider;
@@ -575,30 +553,22 @@ function bindEvents() {
     });
   });
 
-  elements.saveProject.addEventListener('click', () => {
-    handleSaveProject();
-  });
-  elements.newProject.addEventListener('click', () => {
-    handleNewProject();
-  });
+  // Projects
+  elements.saveProject.addEventListener('click', handleSaveProject);
+  elements.newProject.addEventListener('click', handleNewProject);
   elements.projectList.addEventListener('click', handleProjectListInteraction);
 
+  // View controls
   elements.zoomIn.addEventListener('click', () => {
-    if (!ensureAuthenticated()) {
-      return;
-    }
+    if (!ensureAuthenticated()) return;
     adjustZoom(ZOOM_STEP);
   });
   elements.zoomOut.addEventListener('click', () => {
-    if (!ensureAuthenticated()) {
-      return;
-    }
+    if (!ensureAuthenticated()) return;
     adjustZoom(-ZOOM_STEP);
   });
   elements.resetView.addEventListener('click', () => {
-    if (!ensureAuthenticated()) {
-      return;
-    }
+    if (!ensureAuthenticated()) return;
     resetView(true);
   });
   elements.zoomSlider.addEventListener('input', (event) => {
@@ -609,35 +579,27 @@ function bindEvents() {
     handleZoomSlider(event);
   });
   elements.togglePan.addEventListener('click', () => {
-    if (!ensureAuthenticated()) {
-      return;
-    }
+    if (!ensureAuthenticated()) return;
     togglePanMode();
   });
 
-  elements.canvasWrapper.addEventListener(
-    'wheel',
-    (event) => {
-      if (!authState.isAuthenticated) {
-        return;
-      }
-      handleCanvasWheel(event);
-    },
-    { passive: false },
-  );
+  elements.canvasWrapper.addEventListener('wheel', (event) => {
+    if (!authState.isAuthenticated) return;
+    handleCanvasWheel(event);
+  }, { passive: false });
 
+  // Drawing
   doodleCanvas.addEventListener('pointerdown', startDrawing);
   doodleCanvas.addEventListener('pointermove', continueDrawing);
   doodleCanvas.addEventListener('pointerup', finishDrawing);
   doodleCanvas.addEventListener('pointerleave', finishDrawing);
   doodleCanvas.addEventListener('pointercancel', finishDrawing);
 
+  // Keyboard
   window.addEventListener('keydown', (event) => {
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'z') {
       event.preventDefault();
-      if (!ensureAuthenticated()) {
-        return;
-      }
+      if (!ensureAuthenticated()) return;
       undoDoodle();
     }
     if (event.key === 'Escape') {
@@ -648,15 +610,12 @@ function bindEvents() {
       handleSpaceDown(event);
     }
   });
-
   window.addEventListener('keyup', (event) => {
     if (event.code === 'Space') {
       handleSpaceUp(event);
     }
   });
-}
-
-function populateFontOptions() {
+}function populateFontOptions() {
   elements.fontSelect.innerHTML = '';
   FONT_OPTIONS.forEach((option) => {
     const opt = document.createElement('option');
@@ -720,7 +679,7 @@ function handleAuthSubmit(event) {
     users[index] = { ...existingUser, lastLoginAt: Date.now() };
     saveUsers(users);
     elements.authForm.reset();
-    completeLogin(users[index], '登录成功，开始创作吧！', '登录成功，请选择照片或开启相机。');
+    completeLogin(users[index], '登录成功，开始创作吧！', '登录成功，请选择照片上传。');
     return;
   }
 
@@ -741,7 +700,7 @@ function handleAuthSubmit(event) {
   users.push(newUser);
   saveUsers(users);
   elements.authForm.reset();
-  completeLogin(newUser, '注册成功，已自动登录。', '注册成功，快来拍摄或上传照片吧！');
+  completeLogin(newUser, '注册成功，已自动登录。', '注册成功，快来上传照片吧！');
 }
 
 function toggleAuthMode() {
@@ -858,7 +817,7 @@ function updateAuthUI() {
     if (elements.projectName) {
       elements.projectName.value = '';
     }
-    showOverlay('请登录后开启相机或上传照片。');
+    showOverlay('请先上传一张照片开始创作。');
   }
 }
 
@@ -1048,7 +1007,7 @@ function handleSaveProject() {
   }
   if (!state.hasPhoto) {
     highlightPlaceholder();
-    showAuthMessage('请先拍摄或上传照片，再保存作品。');
+    showAuthMessage('请先上传照片，再保存作品。');
     announce('需先载入照片后才能保存作品。');
     return;
   }
@@ -1118,7 +1077,7 @@ function handleNewProject() {
   resetView();
   updatePlaceholder();
   showAuthMessage('已创建新的空白作品。');
-  announce('新的空白作品已就绪，请先拍摄或上传照片。');
+  announce('新的空白作品已就绪，请先上传照片。');
 }
 
 function handleProjectListInteraction(event) {
@@ -1381,46 +1340,7 @@ function handleSocialSignIn(providerKey) {
 
 
 
-async function startCamera() {
-  if (!isCameraSupported()) {
-    disableCameraControls();
-    throw new Error('Camera not supported');
-  }
-
-  try {
-    announce('正在请求摄像头权限…');
-    elements.startCamera.disabled = true;
-    const stream = await navigator.mediaDevices.getUserMedia({
-      video: {
-        facingMode: 'user',
-        width: { ideal: 1920 },
-        height: { ideal: 1080 },
-      },
-      audio: false,
-    });
-
-    state.cameraStream = stream;
-    elements.video.srcObject = stream;
-    await playVideo(elements.video);
-    state.cameraReady = true;
-    hideOverlay();
-    announce('摄像头已开启，可以点击“拍摄照片”捕捉画面。');
-  } catch (error) {
-    const message = error?.name === 'NotAllowedError'
-      ? '访问摄像头被拒绝，请检查浏览器权限设置。'
-      : `无法访问摄像头：${error?.message ?? '未知错误'}`;
-    announce(message);
-    stopCamera();
-    throw error;
-  } finally {
-  }
-}
-
-
-
-
-
-function handleUpload(event) {
+async function startCamera() { return Promise.resolve(); }function handleUpload(event) {
   const [file] = event.target.files;
   
   if (!file) {
@@ -1595,7 +1515,7 @@ function prepareTextPlacement() {
   }
   if (!state.hasPhoto) {
     highlightPlaceholder();
-    announce('请先拍摄或上传一张照片。');
+    announce('请先上传一张照片。');
     return;
   }
   const text = elements.textContent.value.trim();
@@ -1644,7 +1564,7 @@ function startDrawing(event) {
   }
   if (!state.hasPhoto) {
     highlightPlaceholder();
-    announce('请先拍摄或上传一张照片。');
+    announce('请先上传一张照片。');
     return;
   }
   if (event.isPrimary === false && event.pointerType !== 'mouse') {
@@ -1977,7 +1897,7 @@ function resetDoodleCanvas() {
 
 function exportImage() {
   if (!state.hasPhoto) {
-    announce('请先拍摄或上传一张照片，再导出作品。');
+    announce('请先上传一张照片，再导出作品。');
     highlightPlaceholder();
     return;
   }
@@ -2367,6 +2287,8 @@ function showOverlay(message) {
     }
   } catch {}
 }
+
+
 
 
 
