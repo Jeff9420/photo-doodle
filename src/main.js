@@ -1,10 +1,10 @@
 ﻿import { createUI } from './ui.mjs';
+import { STICKER_LIBRARY, createStickers } from './stickers.mjs';
 import { AUTH_USERS_KEY, AUTH_ACTIVE_KEY, SOCIAL_PROVIDERS, loadUsers, saveUsers } from './auth.mjs';
 import { loadProjectStore, saveProjectStore, loadProjectsForUser, saveProjectsForUser, normalizeProject, serializeProject, formatProjectTimestamp } from './projects.mjs';
 const CANVAS_WIDTH = 1920;
 const CANVAS_HEIGHT = 1080;
 const MAX_HISTORY = 25;
-const PROJECT_STORE_KEY = 'photo-doodle-projects';
 const MAX_PROJECTS = 10;
 const DEFAULT_COLOR = '#ff4b6e';
 const DEFAULT_SIZE = 12;
@@ -76,291 +76,7 @@ const FONT_OPTIONS = [
   },
 ];
 
-function makeSticker(id, text, label, bg, fg, options = {}) {
-  return {
-    id,
-    text,
-    label,
-    bg,
-    fg,
-    fontScale: options.fontScale ?? 0.36,
-    fontFamily: options.fontFamily ?? '"Noto Sans SC", "Microsoft YaHei", sans-serif',
-    fontWeight: options.fontWeight ?? '700',
-    border: options.border ?? 'rgba(0, 0, 0, 0.12)',
-    preview: options.preview ?? text.replace(/\n/g, ' '),
-  };
-}
 
-const STICKER_LIBRARY = {
-  birthday: [
-    makeSticker('bd-01', '馃巶 鐢熸棩蹇箰', '鐢熸棩蹇箰', '#ffe066', '#2f2a46', {
-      preview: '馃巶',
-      fontScale: 0.34,
-    }),
-    makeSticker('bd-02', 'Happy\nBirthday', 'Happy Birthday', '#ffd6e6', '#2f2a46', {
-      fontScale: 0.34,
-    }),
-    makeSticker('bd-03', '鐢滅敎铔嬬硶', '鐢滅敎铔嬬硶', '#ffc3a0', '#402218'),
-    makeSticker('bd-04', '涓轰綘搴嗙敓', '涓轰綘搴嗙敓', '#ffe6f7', '#4a2744'),
-    makeSticker('bd-05', 'Make a Wish', 'Make a Wish', '#b9e9ff', '#1a3c62', {
-      fontScale: 0.32,
-      fontFamily: '"Pacifico", "Brush Script MT", cursive',
-      fontWeight: '400',
-    }),
-    makeSticker('bd-06', 'Party Time', 'Party Time', '#ffd6a5', '#42210b', {
-      fontScale: 0.32,
-    }),
-    makeSticker('bd-07', 'Birthday Queen', 'Birthday Queen', '#f7c9ff', '#472a63', {
-      fontScale: 0.3,
-    }),
-    makeSticker('bd-08', 'Birthday King', 'Birthday King', '#e3f2ff', '#1f2a44', {
-      fontScale: 0.3,
-    }),
-    makeSticker('bd-09', '浜插弸榻愯仛', '浜插弸榻愯仛', '#ffe8cc', '#44281d'),
-    makeSticker('bd-10', '鐢熸棩娲惧', '鐢熸棩娲惧', '#fcd5ce', '#43192d'),
-    makeSticker('bd-11', '宀佸瞾骞冲畨', '宀佸瞾骞冲畨', '#e8f7ff', '#203a43'),
-    makeSticker('bd-12', 'Happy 18', 'Happy 18', '#ffc9de', '#301934', {
-      fontScale: 0.32,
-    }),
-    makeSticker('bd-13', 'Happy 21', 'Happy 21', '#ffe5b4', '#42331f', {
-      fontScale: 0.32,
-    }),
-    makeSticker('bd-14', 'Happy 30', 'Happy 30', '#d7c0ff', '#301c51', {
-      fontScale: 0.32,
-    }),
-    makeSticker('bd-15', 'HBD 馃巶', 'HBD', '#f1f7ff', '#223f5a', {
-      preview: 'HBD',
-    }),
-    makeSticker('bd-16', '馃帀 Surprise!', 'Surprise', '#fff0d1', '#482121', {
-      preview: '馃帀',
-      fontScale: 0.32,
-    }),
-    makeSticker('bd-17', '鍚硅湣鐑?, '鍚硅湣鐑?, '#ffdee9', '#3a1f3c'),
-    makeSticker('bd-18', 'Happy B-Day', 'Happy B-Day', '#e2f0ff', '#173753', {
-      fontScale: 0.32,
-    }),
-    makeSticker('bd-19', 'Celebrate', 'Celebrate', '#ffe6eb', '#493657', {
-      fontScale: 0.32,
-    }),
-    makeSticker('bd-20', 'Cheers to You', 'Cheers to You', '#fbe7c6', '#3f2e2c', {
-      fontScale: 0.3,
-    }),
-    makeSticker('bd-21', 'Birthday Mood', 'Birthday Mood', '#d8f3dc', '#1b4332', {
-      fontScale: 0.3,
-    }),
-    makeSticker('bd-22', 'Best Wishes', 'Best Wishes', '#ffe0f7', '#3f1d58', {
-      fontScale: 0.32,
-    }),
-    makeSticker('bd-23', '鏄熷厜闂€€', '鏄熷厜闂€€', '#f7ebff', '#2e1a47'),
-    makeSticker('bd-24', '鐢熸棩蹇箰鍛€', '鐢熸棩蹇箰鍛€', '#ffefc1', '#4a3426'),
-    makeSticker('bd-25', 'Happy You Day', 'Happy You Day', '#c6f1ff', '#173c54', {
-      fontScale: 0.3,
-    }),
-  ],
-  newYear: [
-    makeSticker('ny-01', '馃Ё 鎭枩鍙戣储', '鎭枩鍙戣储', '#ffeadb', '#5b1a18', {
-      preview: '馃Ё',
-      fontScale: 0.34,
-    }),
-    makeSticker('ny-02', '鏂板勾蹇箰', '鏂板勾蹇箰', '#ffe066', '#2f2a46'),
-    makeSticker('ny-03', 'Happy\nNew Year', 'Happy New Year', '#f4f1ff', '#2b2d42', {
-      fontScale: 0.34,
-    }),
-    makeSticker('ny-04', '涓囦簨濡傛剰', '涓囦簨濡傛剰', '#ffd6a5', '#4a3120'),
-    makeSticker('ny-05', '绾㈠寘鎷挎潵', '绾㈠寘鎷挎潵', '#ffcad4', '#66101f'),
-    makeSticker('ny-06', '绂忔皵婊℃弧', '绂忔皵婊℃弧', '#fff0d1', '#3b1f2b'),
-    makeSticker('ny-07', 'Spring\nFestival', 'Spring Festival', '#d7c0ff', '#311f53', {
-      fontScale: 0.32,
-    }),
-    makeSticker('ny-08', '闄ゅ鍥㈠渾', '闄ゅ鍥㈠渾', '#ffe5ec', '#521b41'),
-    makeSticker('ny-09', '鍏冩皵婊℃弧', '鍏冩皵婊℃弧', '#b9f6ff', '#1a4a5a'),
-    makeSticker('ny-10', '骞冲畨鍠滀箰', '骞冲畨鍠滀箰', '#fef3c7', '#4a3223'),
-    makeSticker('ny-11', 'New Year Spark', 'New Year Spark', '#f3d1f4', '#3a1e4d', {
-      fontScale: 0.3,
-    }),
-    makeSticker('ny-12', '2024', '2024', '#e8f7ff', '#123c69', {
-      fontScale: 0.36,
-      fontFamily: '"Montserrat", "Noto Sans SC", sans-serif',
-    }),
-    makeSticker('ny-13', '鏂版槬蹇箰', '鏂版槬蹇箰', '#ffd1dc', '#5a1a3c'),
-    makeSticker('ny-14', '绂忚繍鍒?, '绂忚繍鍒?, '#ffe6aa', '#4a2c12'),
-    makeSticker('ny-15', '榫欒吘鍥涙捣', '榫欒吘鍥涙捣', '#f6d5ff', '#321d4f'),
-    makeSticker('ny-16', '鐑熻姳缁芥斁', '鐑熻姳缁芥斁', '#c6f1ff', '#112d4e'),
-    makeSticker('ny-17', '濂借繍甯稿湪', '濂借繍甯稿湪', '#ffeadb', '#5f2a2a'),
-    makeSticker('ny-18', '涓炬澂娆㈠簡', '涓炬澂娆㈠簡', '#ffe6f7', '#472a63'),
-    makeSticker('ny-19', '寮€闂ㄨ鍠?, '寮€闂ㄨ鍠?, '#fdd2af', '#4c2a1a'),
-    makeSticker('ny-20', '绂忓埌浣犲', '绂忓埌浣犲', '#fff0d1', '#482121'),
-    makeSticker('ny-21', '杩庢柊绾崇', '杩庢柊绾崇', '#e4f9f5', '#116466'),
-    makeSticker('ny-22', '鍥㈠渾鏃跺埢', '鍥㈠渾鏃跺埢', '#ffe6cc', '#3d1f2b'),
-    makeSticker('ny-23', 'Happy Spring', 'Happy Spring', '#d7ecff', '#112a46', {
-      fontScale: 0.3,
-    }),
-    makeSticker('ny-24', 'Lucky Star', 'Lucky Star', '#fde2ff', '#311f53', {
-      fontScale: 0.32,
-    }),
-    makeSticker('ny-25', '杈炴棫杩庢柊', '杈炴棫杩庢柊', '#f7fff6', '#1b4332'),
-  ],
-  anniversary: [
-    makeSticker('an-01', '绾康鏃ュ揩涔?, '绾康鏃ュ揩涔?, '#ffe6f2', '#5a2d59'),
-    makeSticker('an-02', 'Love\nYou Forever', 'Love You Forever', '#dfe7ff', '#2d3f72', {
-      fontScale: 0.3,
-      fontFamily: '"Pacifico", "Brush Script MT", cursive',
-      fontWeight: '400',
-    }),
-    makeSticker('an-03', '鍦ㄤ竴璧穃n绗竴骞?, '鍦ㄤ竴璧风涓€骞?, '#ffe0d6', '#6d2c3b'),
-    makeSticker('an-04', '鎵у瓙涔嬫墜', '鎵у瓙涔嬫墜', '#f8f0ff', '#4a2f73'),
-    makeSticker('an-05', '浣欑敓璇峰鎸囨暀', '浣欑敓璇峰鎸囨暀', '#fff5d7', '#5a3e2c'),
-    makeSticker('an-06', '鎴戜滑鐨勫畤瀹?, '鎴戜滑鐨勫畤瀹?, '#e4f6ff', '#1d3557'),
-    makeSticker('an-07', 'Heart & Soul', 'Heart & Soul', '#ffd9ec', '#521b41', {
-      fontScale: 0.32,
-    }),
-    makeSticker('an-08', '鐢滆湝鏃跺埢', '鐢滆湝鏃跺埢', '#ffe7d1', '#5c2d1f'),
-    makeSticker('an-09', '鍛ㄥ勾鏃呰', '鍛ㄥ勾鏃呰', '#dff7f9', '#145a70'),
-    makeSticker('an-10', '鐩镐即鍒拌€?, '鐩镐即鍒拌€?, '#f3e5ff', '#452e72'),
-    makeSticker('an-11', '绗?鍛ㄥ勾', '绗?鍛ㄥ勾', '#ffe0ef', '#511f39'),
-    makeSticker('an-12', '绗?0鍛ㄥ勾', '绗?0鍛ㄥ勾', '#fdebd3', '#6a381c'),
-    makeSticker('an-13', '瀚佺粰骞哥', '瀚佺粰骞哥', '#ffeef5', '#7a2f43'),
-    makeSticker('an-14', 'Always Yours', 'Always Yours', '#e8f0ff', '#243b6b', {
-      fontScale: 0.32,
-    }),
-    makeSticker('an-15', '閿佸畾鐖辨剰', '閿佸畾鐖辨剰', '#fce1ff', '#4d1a66'),
-    makeSticker('an-16', '绾﹀畾缁堣韩', '绾﹀畾缁堣韩', '#fff1d6', '#523423'),
-    makeSticker('an-17', 'Marry Me Again', 'Marry Me Again', '#e6f5ff', '#1f3e64', {
-      fontScale: 0.3,
-    }),
-    makeSticker('an-18', '鎭嬩汉鑺?, '鎭嬩汉鑺?, '#ffdfe5', '#7b2741'),
-    makeSticker('an-19', '鎴戜滑鐨勬晠浜?, '鎴戜滑鐨勬晠浜?, '#fff5f0', '#53302b'),
-    makeSticker('an-20', '骞哥鍧愭爣', '骞哥鍧愭爣', '#e4fff5', '#1c6b4a'),
-    makeSticker('an-21', '鍙屼汉灏忓畤瀹?, '鍙屼汉灏忓畤瀹?, '#e8f4ff', '#27406b'),
-    makeSticker('an-22', 'Till The End', 'Till The End', '#f7ddff', '#472a63', {
-      fontScale: 0.32,
-    }),
-    makeSticker('an-23', '閿佷綇姝ゅ埢', '閿佷綇姝ゅ埢', '#ffeacd', '#6a3e1f'),
-    makeSticker('an-24', '520 绾康', '520 绾康', '#ffcfe1', '#5a2341'),
-    makeSticker('an-25', 'Best Pair Ever', 'Best Pair Ever', '#f1f8ff', '#1b3a57', {
-      fontScale: 0.3,
-    }),
-  ],
-  party: [
-    makeSticker('pt-01', 'Party\nTime', 'Party Time', '#ffeecf', '#56341f', {
-      fontScale: 0.34,
-    }),
-    makeSticker('pt-02', 'Dance All Night', 'Dance All Night', '#e2f4ff', '#1f3a64', {
-      fontScale: 0.3,
-    }),
-    makeSticker('pt-03', '鐙傛寮€鍦?, '鐙傛寮€鍦?, '#ffd9e8', '#551c41'),
-    makeSticker('pt-04', 'Happy Hour', 'Happy Hour', '#fff5d6', '#6b351d'),
-    makeSticker('pt-05', 'DJ On Fire', 'DJ On Fire', '#dff9ff', '#124d63', {
-      fontScale: 0.3,
-    }),
-    makeSticker('pt-06', '鐙傜儹鐜板満', '鐙傜儹鐜板満', '#f4e5ff', '#422b70'),
-    makeSticker('pt-07', '鐏厜闂€€', '鐏厜闂€€', '#ffe0f2', '#5a2151'),
-    makeSticker('pt-08', 'Cheer Up!', 'Cheer Up!', '#f8f0d8', '#663f22', {
-      fontScale: 0.34,
-    }),
-    makeSticker('pt-09', '鑸炴睜瑙?, '鑸炴睜瑙?, '#e6fff6', '#13694a'),
-    makeSticker('pt-10', '娲惧閭€璇?, '娲惧閭€璇?, '#ffe7d6', '#6a311c'),
-    makeSticker('pt-11', 'Swag Night', 'Swag Night', '#dde6ff', '#1f2f66', {
-      fontScale: 0.32,
-    }),
-    makeSticker('pt-12', '寰喓鐬棿', '寰喓鐬棿', '#fbe2ff', '#4d1d66'),
-    makeSticker('pt-13', '鏈€浣抽€犲瀷', '鏈€浣抽€犲瀷', '#ffefd6', '#57422d'),
-    makeSticker('pt-14', '涓炬澂鍚屽簡', '涓炬澂鍚屽簡', '#ffe6eb', '#5b2e3c'),
-    makeSticker('pt-15', 'Let鈥檚 Groove', 'Let鈥檚 Groove', '#e2f0ff', '#1f3f68', {
-      fontScale: 0.3,
-    }),
-    makeSticker('pt-16', 'Glow Up', 'Glow Up', '#fef3c7', '#614218'),
-    makeSticker('pt-17', '闂€€澶?, '闂€€澶?, '#f2deff', '#412d70'),
-    makeSticker('pt-18', 'Team Celebration', 'Team Celebration', '#ddf9f0', '#185a4a', {
-      fontScale: 0.28,
-    }),
-    makeSticker('pt-19', 'Best Squad', 'Best Squad', '#f1f8ff', '#1f3f5a', {
-      fontScale: 0.3,
-    }),
-    makeSticker('pt-20', '娲惧濂崇帇', '娲惧濂崇帇', '#ffe2f1', '#6a234b'),
-    makeSticker('pt-21', '娲惧鐢风', '娲惧鐢风', '#e5edff', '#1f3d76'),
-    makeSticker('pt-22', '鍗堝鐑熺伀', '鍗堝鐑熺伀', '#fff0d9', '#56341d'),
-    makeSticker('pt-23', '寰嬪姩蹇冭烦', '寰嬪姩蹇冭烦', '#e6faff', '#13506a'),
-    makeSticker('pt-24', '搴嗙鑳滃埄', '搴嗙鑳滃埄', '#f3ffea', '#29552a'),
-    makeSticker('pt-25', 'Sparkle Night', 'Sparkle Night', '#ffe6ff', '#4c1f73', {
-      fontScale: 0.32,
-    }),
-  ],
-  blessing: [
-    makeSticker('bl-01', '鍠滀箰瀹夊悍', '鍠滀箰瀹夊悍', '#fff3d9', '#5c3a17'),
-    makeSticker('bl-02', 'Good Vibes', 'Good Vibes', '#e6f8ff', '#1f3f6a', {
-      fontScale: 0.32,
-    }),
-    makeSticker('bl-03', '蹇冩兂浜嬫垚', '蹇冩兂浜嬫垚', '#ffe7f2', '#5b2a4a'),
-    makeSticker('bl-04', '濂借繍杩炶繛', '濂借繍杩炶繛', '#ffefd6', '#573f1f'),
-    makeSticker('bl-05', 'Shine Bright', 'Shine Bright', '#e2f4ff', '#21395c', {
-      fontScale: 0.32,
-    }),
-    makeSticker('bl-06', '姊︽兂寮€鑺?, '姊︽兂寮€鑺?, '#fff1ec', '#5c3228'),
-    makeSticker('bl-07', 'Happy For You', 'Happy For You', '#f0f5ff', '#1e3f6b', {
-      fontScale: 0.3,
-    }),
-    makeSticker('bl-08', '鍏夎姃涓囦笀', '鍏夎姃涓囦笀', '#fef3c7', '#6b4218'),
-    makeSticker('bl-09', '鍕囨暍闂€€', '鍕囨暍闂€€', '#e7ffe9', '#205b35'),
-    makeSticker('bl-10', '鍔犳补鎵撴皵', '鍔犳补鎵撴皵', '#e8f8ff', '#205a7a'),
-    makeSticker('bl-11', '椤洪『鍒╁埄', '椤洪『鍒╁埄', '#fff0d6', '#6a3d1c'),
-    makeSticker('bl-12', 'Hugs & Wishes', 'Hugs & Wishes', '#ffe4f0', '#5d2352', {
-      fontScale: 0.3,
-    }),
-    makeSticker('bl-13', '骞冲畨鍠滀箰', '骞冲畨鍠滀箰', '#f3fff4', '#215c32'),
-    makeSticker('bl-14', 'Blessed Day', 'Blessed Day', '#e0f1ff', '#243f6a', {
-      fontScale: 0.32,
-    }),
-    makeSticker('bl-15', '鑺卞紑鏈夋椂', '鑺卞紑鏈夋椂', '#ffe9f0', '#6b2a43'),
-    makeSticker('bl-16', '鍠滄皵娲嬫磱', '鍠滄皵娲嬫磱', '#ffe8cc', '#5a2c17'),
-    makeSticker('bl-17', '鎷ユ姳褰撲笅', '鎷ユ姳褰撲笅', '#e7faff', '#245b70'),
-    makeSticker('bl-18', '蹇冩€€鎰熸仼', '蹇冩€€鎰熸仼', '#fff6df', '#5c3f20'),
-    makeSticker('bl-19', '寮€蹇冨氨濂?, '寮€蹇冨氨濂?, '#f1e8ff', '#382d72'),
-    makeSticker('bl-20', '骞哥甯镐即', '骞哥甯镐即', '#ffe4ec', '#632f41'),
-    makeSticker('bl-21', '濂借繍閿﹀泭', '濂借繍閿﹀泭', '#fff0dc', '#6d3a1b'),
-    makeSticker('bl-22', '蹇冩殩濡傚厜', '蹇冩殩濡傚厜', '#eafcff', '#246c7a'),
-    makeSticker('bl-23', '鍏冩皵婊℃弧', '鍏冩皵婊℃弧', '#f3fff0', '#1f6c3b'),
-    makeSticker('bl-24', 'New Chapter', 'New Chapter', '#e2f0ff', '#1f3a6a', {
-      fontScale: 0.32,
-    }),
-    makeSticker('bl-25', '姣忓ぉ閮界編濂?, '姣忓ぉ閮界編濂?, '#ffe8f5', '#5a2d4a'),
-  ],
-  seasonal: [
-    makeSticker('sn-01', '鏄ユ棩鍑烘父', '鏄ユ棩鍑烘父', '#e8ffe9', '#1f6a3a'),
-    makeSticker('sn-02', '澶忔棩娴烽', '澶忔棩娴烽', '#dff5ff', '#13496b'),
-    makeSticker('sn-03', '绉嬪鏄熸渤', '绉嬪鏄熸渤', '#fff1d6', '#5a3a1f'),
-    makeSticker('sn-04', '鍐棩鏆栭槼', '鍐棩鏆栭槼', '#f5f1ff', '#2f3a6a'),
-    makeSticker('sn-05', '妯辫姳闄愬畾', '妯辫姳闄愬畾', '#ffe3f1', '#6a2c4d'),
-    makeSticker('sn-06', '浠插娲惧', '浠插娲惧', '#e6fff6', '#1c6b4a'),
-    makeSticker('sn-07', '鏀惰幏婊℃弧', '鏀惰幏婊℃弧', '#ffedd6', '#5f381f'),
-    makeSticker('sn-08', '闆姳杞昏垶', '闆姳杞昏垶', '#e5f2ff', '#234a74'),
-    makeSticker('sn-09', 'Spring Bloom', 'Spring Bloom', '#f6ffe8', '#2f6a31', {
-      fontScale: 0.32,
-    }),
-    makeSticker('sn-10', 'Summer Chill', 'Summer Chill', '#e0f8ff', '#195a74', {
-      fontScale: 0.32,
-    }),
-    makeSticker('sn-11', 'Autumn Cozy', 'Autumn Cozy', '#ffe9d6', '#5f3a1f'),
-    makeSticker('sn-12', 'Winter Magic', 'Winter Magic', '#e7efff', '#2a3d72', {
-      fontScale: 0.3,
-    }),
-    makeSticker('sn-13', '娓呭噳涓€澶?, '娓呭噳涓€澶?, '#e3fff6', '#176a56'),
-    makeSticker('sn-14', '钀藉彾缂ょ悍', '钀藉彾缂ょ悍', '#ffe7cc', '#6b3b1f'),
-    makeSticker('sn-15', '韪忛洩瀵绘', '韪忛洩瀵绘', '#f2f4ff', '#2d4574'),
-    makeSticker('sn-16', '鏆栨槬鑺变簨', '鏆栨槬鑺变簨', '#ffe9f6', '#6a2a4e'),
-    makeSticker('sn-17', '澶忓鐑熻姳', '澶忓鐑熻姳', '#e9f8ff', '#1f4f7a'),
-    makeSticker('sn-18', '绉嬫敹绁濈', '绉嬫敹绁濈', '#fff0de', '#5a381e'),
-    makeSticker('sn-19', '鍐鐑ギ', '鍐鐑ギ', '#f7efe6', '#5d3f24'),
-    makeSticker('sn-20', '绔嬫槬濂借繍', '绔嬫槬濂借繍', '#eaffea', '#1f6a37'),
-    makeSticker('sn-21', '鐩涘娲惧', '鐩涘娲惧', '#def6ff', '#154e78'),
-    makeSticker('sn-22', '閲戠搴嗗吀', '閲戠搴嗗吀', '#ffe7cf', '#6c421f'),
-    makeSticker('sn-23', '鏆栧啲鐩歌仛', '鏆栧啲鐩歌仛', '#f4f0ff', '#2e3f72'),
-    makeSticker('sn-24', '鍥涘濡傛槬', '鍥涘濡傛槬', '#e7ffe7', '#1f6b3a'),
-    makeSticker('sn-25', 'Seasonal Love', 'Seasonal Love', '#f0f3ff', '#253a70', {
-      fontScale: 0.32,
-    }),
-  ],
-};
 
 const state = {
   mode: 'draw',
@@ -437,6 +153,9 @@ const elements = {
   resetView: document.getElementById('resetView'),
   togglePan: document.getElementById('togglePan'),
 };
+const stickers = createStickers(elements, state, authState, ensureAuthenticated, cancelTextPlacement, announce);
+const { updateStickerCategory, renderStickerList, selectSticker, updateStickerSelection, updateStickerMode, exitStickerMode, getSelectedSticker } = stickers;
+
 const { announce, updatePlaceholder, highlightPlaceholder } = createUI(elements, state);
 
 
@@ -1428,21 +1147,6 @@ function updateSizeSelection(size) {
   });
 }
 
-function updateStickerCategory() {
-  elements.stickerTabs.forEach((tab) => {
-    const isActive = tab.dataset.stickerCategory === state.stickerCategory;
-    tab.classList.toggle('active', isActive);
-    tab.setAttribute('aria-pressed', String(isActive));
-  });
-}
-
-function renderStickerList() {
-  const container = elements.stickerList;
-  container.innerHTML = '';
-  const list = STICKER_LIBRARY[state.stickerCategory] ?? [];
-  if (!list.length) {
-    return;
-  }
   list.forEach((sticker) => {
     const button = document.createElement('button');
     button.type = 'button';
@@ -1464,36 +1168,8 @@ function renderStickerList() {
   updateStickerSelection();
 }
 
-function selectSticker(stickerId) {
-  state.selectedStickerId = stickerId;
-  state.mode = 'sticker';
-  cancelTextPlacement();
-  updateStickerSelection();
-  updateStickerMode();
-  announce('璐寸焊鏀剧疆妯″紡宸插紑鍚紝鐐瑰嚮鐢诲竷鍗冲彲鏀剧疆銆?);
 }
 
-function updateStickerSelection() {
-  const buttons = elements.stickerList.querySelectorAll('.sticker-button');
-  buttons.forEach((button) => {
-    const isActive = button.dataset.stickerId === state.selectedStickerId;
-    button.classList.toggle('active', isActive);
-    button.disabled = !authState.isAuthenticated;
-  });
-}
-
-function updateStickerMode(silent = false) {
-  const isStickerMode = state.mode === 'sticker' && state.selectedStickerId;
-  elements.exitStickerMode.disabled = !isStickerMode || !authState.isAuthenticated;
-  if (!silent && !isStickerMode) {
-    announce('宸查€€鍑鸿创绾告斁缃ā寮忋€?);
-  }
-}
-
-function exitStickerMode(silent = false) {
-  if (state.mode !== 'sticker' && !state.selectedStickerId) {
-    return;
-  }
   state.mode = 'draw';
   state.selectedStickerId = null;
   updateStickerSelection();
@@ -1740,11 +1416,6 @@ function placeSticker(point) {
   }
   drawSticker(point.x, point.y, sticker, state.stickerSize);
   announce('璐寸焊宸叉斁缃紝鍙户缁偣鍑绘坊鍔犳洿澶氥€?);
-}
-
-function getSelectedSticker() {
-  const list = STICKER_LIBRARY[state.stickerCategory] ?? [];
-  return list.find((item) => item.id === state.selectedStickerId) ?? null;
 }
 
 function drawTextBlock(x, y, options) {
@@ -2248,6 +1919,10 @@ function clamp(value, min, max) {
 }
 
 init();
+
+
+
+
 
 
 
