@@ -19,58 +19,7 @@
 
       <main class="app-main">
         <section class="panel controls" aria-label="操作面板">
-          <div class="card auth-card" id="authCard">
-            <div class="card-header">
-              <h2>邮箱注册 / 登录</h2>
-              <p>邮箱账号仅保存在本地浏览器，用于解锁创作体验。</p>
-            </div>
-            <form id="authForm" novalidate>
-              <div class="field-group">
-                <label for="authEmail">邮箱地址</label>
-                <input
-                  id="authEmail"
-                  type="email"
-                  placeholder="you@example.com"
-                  autocomplete="email"
-                  required
-                />
-              </div>
-              <div class="field-group">
-                <label for="authPassword">密码</label>
-                <input
-                  id="authPassword"
-                  type="password"
-                  placeholder="至少 6 位字符"
-                  autocomplete="current-password"
-                  minlength="6"
-                  required
-                />
-              </div>
-              <div class="auth-actions">
-                <button id="authSubmit" type="submit">登录</button>
-                <button id="authToggle" type="button" class="secondary">我需要注册</button>
-              </div>
-              <p class="hint-text" id="authMessage" role="status" aria-live="polite"></p>
-            </form>
-            <div class="social-login" id="socialLogin" aria-label="社交登录入口">
-              <p>或使用社交账号快速登录：</p>
-              <div class="social-buttons">
-                <button type="button" class="social-button google" data-provider="google">
-                  <span class="social-icon" aria-hidden="true">G</span>
-                  使用 Google 登录
-                </button>
-                <button type="button" class="social-button apple" data-provider="apple">
-                  <span class="social-icon" aria-hidden="true"></span>
-                  使用 Apple 登录
-                </button>
-              </div>
-              <p class="hint-text">社交登录同样保存在本地，用于快速解锁全部功能。</p>
-            </div>
-            <div class="auth-success is-hidden" id="authSuccess">
-              <p id="authWelcome"></p>
-              <button id="authSignOut" type="button" class="secondary">退出登录</button>
-            </div>
-          </div>
+          <!-- 登录/注册功能暂时下线，访客模式默认可用，移除登录卡片 -->
 
           
 

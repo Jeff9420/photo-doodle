@@ -270,14 +270,8 @@ function bindEvents() {
 
   elements.exitStickerMode.addEventListener('click', () => {
     exitStickerMode();
-  });
-
-  elements.authForm.addEventListener('submit', handleAuthSubmit);
-  elements.authToggle.addEventListener('click', () => {
-    toggleAuthMode();
-  });
-  elements.authSignOut.addEventListener('click', () => {
-    signOut();
+  });\n  if (elements.authForm) { elements.authForm.addEventListener('submit', handleAuthSubmit); }\n  if (elements.authToggle) { elements.authToggle.addEventListener('click', () => { toggleAuthMode(); }); }
+  });\n  if (elements.authSignOut) { elements.authSignOut.addEventListener('click', () => { signOut(); }); }
   });
 
   elements.socialButtons.forEach((button) => {
@@ -1915,6 +1909,7 @@ function clamp(value, min, max) {
 }
 
 init();
+
 
 
 
