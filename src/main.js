@@ -2471,7 +2471,7 @@ function capturePhoto() {}
 // Announce/overlay fallbacks when camera UI is absent
 function announce(message) {
   try {
-    if (elements && elements.authMessage) {
+    if (authState && authState.isAuthenticated && elements && elements.authMessage) {
       elements.authMessage.textContent = String(message);
     }
   } catch {}
