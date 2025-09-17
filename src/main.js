@@ -24,61 +24,61 @@ const SOCIAL_PROVIDERS = {
 const FONT_OPTIONS = [
   {
     value: 'noto-sans',
-    label: '简约黑体',
+    label: '绠€绾﹂粦浣?,
     stack: '"Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif',
     weight: '700',
   },
   {
     value: 'serif-classic',
-    label: '经典宋体',
+    label: '缁忓吀瀹嬩綋',
     stack: '"Songti SC", SimSun, serif',
     weight: '700',
   },
   {
     value: 'rounded',
-    label: '圆润标题',
+    label: '鍦嗘鼎鏍囬',
     stack: '"Nunito", "Noto Sans SC", sans-serif',
     weight: '700',
   },
   {
     value: 'handwritten',
-    label: '活泼手写',
+    label: '娲绘臣鎵嬪啓',
     stack: '"Comic Sans MS", "ZCOOL KuaiLe", cursive',
     weight: '700',
   },
   {
     value: 'calligraphy',
-    label: '行书风',
+    label: '琛屼功椋?,
     stack: '"KaiTi", "STKaiti", serif',
     weight: '700',
   },
   {
     value: 'display-impact',
-    label: '节庆标题',
+    label: '鑺傚簡鏍囬',
     stack: '"Impact", "Arial Black", sans-serif',
     weight: '700',
   },
   {
     value: 'script-soft',
-    label: '浪漫英文字体',
+    label: '娴极鑻辨枃瀛椾綋',
     stack: '"Pacifico", "Brush Script MT", cursive',
     weight: '400',
   },
   {
     value: 'neon-bold',
-    label: '霓虹风格',
+    label: '闇撹櫣椋庢牸',
     stack: '"Montserrat", "Noto Sans SC", sans-serif',
     weight: '800',
   },
   {
     value: 'bubble-fun',
-    label: '童趣泡泡体',
+    label: '绔ヨ叮娉℃场浣?,
     stack: '"Baloo 2", "Comic Sans MS", cursive',
     weight: '700',
   },
   {
     value: 'mono-type',
-    label: '打字机',
+    label: '鎵撳瓧鏈?,
     stack: '"Courier New", monospace',
     weight: '700',
   },
@@ -101,15 +101,15 @@ function makeSticker(id, text, label, bg, fg, options = {}) {
 
 const STICKER_LIBRARY = {
   birthday: [
-    makeSticker('bd-01', '🎂 生日快乐', '生日快乐', '#ffe066', '#2f2a46', {
-      preview: '🎂',
+    makeSticker('bd-01', '馃巶 鐢熸棩蹇箰', '鐢熸棩蹇箰', '#ffe066', '#2f2a46', {
+      preview: '馃巶',
       fontScale: 0.34,
     }),
     makeSticker('bd-02', 'Happy\nBirthday', 'Happy Birthday', '#ffd6e6', '#2f2a46', {
       fontScale: 0.34,
     }),
-    makeSticker('bd-03', '甜甜蛋糕', '甜甜蛋糕', '#ffc3a0', '#402218'),
-    makeSticker('bd-04', '为你庆生', '为你庆生', '#ffe6f7', '#4a2744'),
+    makeSticker('bd-03', '鐢滅敎铔嬬硶', '鐢滅敎铔嬬硶', '#ffc3a0', '#402218'),
+    makeSticker('bd-04', '涓轰綘搴嗙敓', '涓轰綘搴嗙敓', '#ffe6f7', '#4a2744'),
     makeSticker('bd-05', 'Make a Wish', 'Make a Wish', '#b9e9ff', '#1a3c62', {
       fontScale: 0.32,
       fontFamily: '"Pacifico", "Brush Script MT", cursive',
@@ -124,9 +124,9 @@ const STICKER_LIBRARY = {
     makeSticker('bd-08', 'Birthday King', 'Birthday King', '#e3f2ff', '#1f2a44', {
       fontScale: 0.3,
     }),
-    makeSticker('bd-09', '亲友齐聚', '亲友齐聚', '#ffe8cc', '#44281d'),
-    makeSticker('bd-10', '生日派对', '生日派对', '#fcd5ce', '#43192d'),
-    makeSticker('bd-11', '岁岁平安', '岁岁平安', '#e8f7ff', '#203a43'),
+    makeSticker('bd-09', '浜插弸榻愯仛', '浜插弸榻愯仛', '#ffe8cc', '#44281d'),
+    makeSticker('bd-10', '鐢熸棩娲惧', '鐢熸棩娲惧', '#fcd5ce', '#43192d'),
+    makeSticker('bd-11', '宀佸瞾骞冲畨', '宀佸瞾骞冲畨', '#e8f7ff', '#203a43'),
     makeSticker('bd-12', 'Happy 18', 'Happy 18', '#ffc9de', '#301934', {
       fontScale: 0.32,
     }),
@@ -136,14 +136,14 @@ const STICKER_LIBRARY = {
     makeSticker('bd-14', 'Happy 30', 'Happy 30', '#d7c0ff', '#301c51', {
       fontScale: 0.32,
     }),
-    makeSticker('bd-15', 'HBD 🎂', 'HBD', '#f1f7ff', '#223f5a', {
+    makeSticker('bd-15', 'HBD 馃巶', 'HBD', '#f1f7ff', '#223f5a', {
       preview: 'HBD',
     }),
-    makeSticker('bd-16', '🎉 Surprise!', 'Surprise', '#fff0d1', '#482121', {
-      preview: '🎉',
+    makeSticker('bd-16', '馃帀 Surprise!', 'Surprise', '#fff0d1', '#482121', {
+      preview: '馃帀',
       fontScale: 0.32,
     }),
-    makeSticker('bd-17', '吹蜡烛', '吹蜡烛', '#ffdee9', '#3a1f3c'),
+    makeSticker('bd-17', '鍚硅湣鐑?, '鍚硅湣鐑?, '#ffdee9', '#3a1f3c'),
     makeSticker('bd-18', 'Happy B-Day', 'Happy B-Day', '#e2f0ff', '#173753', {
       fontScale: 0.32,
     }),
@@ -159,30 +159,30 @@ const STICKER_LIBRARY = {
     makeSticker('bd-22', 'Best Wishes', 'Best Wishes', '#ffe0f7', '#3f1d58', {
       fontScale: 0.32,
     }),
-    makeSticker('bd-23', '星光闪耀', '星光闪耀', '#f7ebff', '#2e1a47'),
-    makeSticker('bd-24', '生日快乐呀', '生日快乐呀', '#ffefc1', '#4a3426'),
+    makeSticker('bd-23', '鏄熷厜闂€€', '鏄熷厜闂€€', '#f7ebff', '#2e1a47'),
+    makeSticker('bd-24', '鐢熸棩蹇箰鍛€', '鐢熸棩蹇箰鍛€', '#ffefc1', '#4a3426'),
     makeSticker('bd-25', 'Happy You Day', 'Happy You Day', '#c6f1ff', '#173c54', {
       fontScale: 0.3,
     }),
   ],
   newYear: [
-    makeSticker('ny-01', '🧧 恭喜发财', '恭喜发财', '#ffeadb', '#5b1a18', {
-      preview: '🧧',
+    makeSticker('ny-01', '馃Ё 鎭枩鍙戣储', '鎭枩鍙戣储', '#ffeadb', '#5b1a18', {
+      preview: '馃Ё',
       fontScale: 0.34,
     }),
-    makeSticker('ny-02', '新年快乐', '新年快乐', '#ffe066', '#2f2a46'),
+    makeSticker('ny-02', '鏂板勾蹇箰', '鏂板勾蹇箰', '#ffe066', '#2f2a46'),
     makeSticker('ny-03', 'Happy\nNew Year', 'Happy New Year', '#f4f1ff', '#2b2d42', {
       fontScale: 0.34,
     }),
-    makeSticker('ny-04', '万事如意', '万事如意', '#ffd6a5', '#4a3120'),
-    makeSticker('ny-05', '红包拿来', '红包拿来', '#ffcad4', '#66101f'),
-    makeSticker('ny-06', '福气满满', '福气满满', '#fff0d1', '#3b1f2b'),
+    makeSticker('ny-04', '涓囦簨濡傛剰', '涓囦簨濡傛剰', '#ffd6a5', '#4a3120'),
+    makeSticker('ny-05', '绾㈠寘鎷挎潵', '绾㈠寘鎷挎潵', '#ffcad4', '#66101f'),
+    makeSticker('ny-06', '绂忔皵婊℃弧', '绂忔皵婊℃弧', '#fff0d1', '#3b1f2b'),
     makeSticker('ny-07', 'Spring\nFestival', 'Spring Festival', '#d7c0ff', '#311f53', {
       fontScale: 0.32,
     }),
-    makeSticker('ny-08', '除夕团圆', '除夕团圆', '#ffe5ec', '#521b41'),
-    makeSticker('ny-09', '元气满满', '元气满满', '#b9f6ff', '#1a4a5a'),
-    makeSticker('ny-10', '平安喜乐', '平安喜乐', '#fef3c7', '#4a3223'),
+    makeSticker('ny-08', '闄ゅ鍥㈠渾', '闄ゅ鍥㈠渾', '#ffe5ec', '#521b41'),
+    makeSticker('ny-09', '鍏冩皵婊℃弧', '鍏冩皵婊℃弧', '#b9f6ff', '#1a4a5a'),
+    makeSticker('ny-10', '骞冲畨鍠滀箰', '骞冲畨鍠滀箰', '#fef3c7', '#4a3223'),
     makeSticker('ny-11', 'New Year Spark', 'New Year Spark', '#f3d1f4', '#3a1e4d', {
       fontScale: 0.3,
     }),
@@ -190,61 +190,61 @@ const STICKER_LIBRARY = {
       fontScale: 0.36,
       fontFamily: '"Montserrat", "Noto Sans SC", sans-serif',
     }),
-    makeSticker('ny-13', '新春快乐', '新春快乐', '#ffd1dc', '#5a1a3c'),
-    makeSticker('ny-14', '福运到', '福运到', '#ffe6aa', '#4a2c12'),
-    makeSticker('ny-15', '龙腾四海', '龙腾四海', '#f6d5ff', '#321d4f'),
-    makeSticker('ny-16', '烟花绽放', '烟花绽放', '#c6f1ff', '#112d4e'),
-    makeSticker('ny-17', '好运常在', '好运常在', '#ffeadb', '#5f2a2a'),
-    makeSticker('ny-18', '举杯欢庆', '举杯欢庆', '#ffe6f7', '#472a63'),
-    makeSticker('ny-19', '开门见喜', '开门见喜', '#fdd2af', '#4c2a1a'),
-    makeSticker('ny-20', '福到你家', '福到你家', '#fff0d1', '#482121'),
-    makeSticker('ny-21', '迎新纳福', '迎新纳福', '#e4f9f5', '#116466'),
-    makeSticker('ny-22', '团圆时刻', '团圆时刻', '#ffe6cc', '#3d1f2b'),
+    makeSticker('ny-13', '鏂版槬蹇箰', '鏂版槬蹇箰', '#ffd1dc', '#5a1a3c'),
+    makeSticker('ny-14', '绂忚繍鍒?, '绂忚繍鍒?, '#ffe6aa', '#4a2c12'),
+    makeSticker('ny-15', '榫欒吘鍥涙捣', '榫欒吘鍥涙捣', '#f6d5ff', '#321d4f'),
+    makeSticker('ny-16', '鐑熻姳缁芥斁', '鐑熻姳缁芥斁', '#c6f1ff', '#112d4e'),
+    makeSticker('ny-17', '濂借繍甯稿湪', '濂借繍甯稿湪', '#ffeadb', '#5f2a2a'),
+    makeSticker('ny-18', '涓炬澂娆㈠簡', '涓炬澂娆㈠簡', '#ffe6f7', '#472a63'),
+    makeSticker('ny-19', '寮€闂ㄨ鍠?, '寮€闂ㄨ鍠?, '#fdd2af', '#4c2a1a'),
+    makeSticker('ny-20', '绂忓埌浣犲', '绂忓埌浣犲', '#fff0d1', '#482121'),
+    makeSticker('ny-21', '杩庢柊绾崇', '杩庢柊绾崇', '#e4f9f5', '#116466'),
+    makeSticker('ny-22', '鍥㈠渾鏃跺埢', '鍥㈠渾鏃跺埢', '#ffe6cc', '#3d1f2b'),
     makeSticker('ny-23', 'Happy Spring', 'Happy Spring', '#d7ecff', '#112a46', {
       fontScale: 0.3,
     }),
     makeSticker('ny-24', 'Lucky Star', 'Lucky Star', '#fde2ff', '#311f53', {
       fontScale: 0.32,
     }),
-    makeSticker('ny-25', '辞旧迎新', '辞旧迎新', '#f7fff6', '#1b4332'),
+    makeSticker('ny-25', '杈炴棫杩庢柊', '杈炴棫杩庢柊', '#f7fff6', '#1b4332'),
   ],
   anniversary: [
-    makeSticker('an-01', '纪念日快乐', '纪念日快乐', '#ffe6f2', '#5a2d59'),
+    makeSticker('an-01', '绾康鏃ュ揩涔?, '绾康鏃ュ揩涔?, '#ffe6f2', '#5a2d59'),
     makeSticker('an-02', 'Love\nYou Forever', 'Love You Forever', '#dfe7ff', '#2d3f72', {
       fontScale: 0.3,
       fontFamily: '"Pacifico", "Brush Script MT", cursive',
       fontWeight: '400',
     }),
-    makeSticker('an-03', '在一起\n第一年', '在一起第一年', '#ffe0d6', '#6d2c3b'),
-    makeSticker('an-04', '执子之手', '执子之手', '#f8f0ff', '#4a2f73'),
-    makeSticker('an-05', '余生请多指教', '余生请多指教', '#fff5d7', '#5a3e2c'),
-    makeSticker('an-06', '我们的宇宙', '我们的宇宙', '#e4f6ff', '#1d3557'),
+    makeSticker('an-03', '鍦ㄤ竴璧穃n绗竴骞?, '鍦ㄤ竴璧风涓€骞?, '#ffe0d6', '#6d2c3b'),
+    makeSticker('an-04', '鎵у瓙涔嬫墜', '鎵у瓙涔嬫墜', '#f8f0ff', '#4a2f73'),
+    makeSticker('an-05', '浣欑敓璇峰鎸囨暀', '浣欑敓璇峰鎸囨暀', '#fff5d7', '#5a3e2c'),
+    makeSticker('an-06', '鎴戜滑鐨勫畤瀹?, '鎴戜滑鐨勫畤瀹?, '#e4f6ff', '#1d3557'),
     makeSticker('an-07', 'Heart & Soul', 'Heart & Soul', '#ffd9ec', '#521b41', {
       fontScale: 0.32,
     }),
-    makeSticker('an-08', '甜蜜时刻', '甜蜜时刻', '#ffe7d1', '#5c2d1f'),
-    makeSticker('an-09', '周年旅行', '周年旅行', '#dff7f9', '#145a70'),
-    makeSticker('an-10', '相伴到老', '相伴到老', '#f3e5ff', '#452e72'),
-    makeSticker('an-11', '第5周年', '第5周年', '#ffe0ef', '#511f39'),
-    makeSticker('an-12', '第10周年', '第10周年', '#fdebd3', '#6a381c'),
-    makeSticker('an-13', '嫁给幸福', '嫁给幸福', '#ffeef5', '#7a2f43'),
+    makeSticker('an-08', '鐢滆湝鏃跺埢', '鐢滆湝鏃跺埢', '#ffe7d1', '#5c2d1f'),
+    makeSticker('an-09', '鍛ㄥ勾鏃呰', '鍛ㄥ勾鏃呰', '#dff7f9', '#145a70'),
+    makeSticker('an-10', '鐩镐即鍒拌€?, '鐩镐即鍒拌€?, '#f3e5ff', '#452e72'),
+    makeSticker('an-11', '绗?鍛ㄥ勾', '绗?鍛ㄥ勾', '#ffe0ef', '#511f39'),
+    makeSticker('an-12', '绗?0鍛ㄥ勾', '绗?0鍛ㄥ勾', '#fdebd3', '#6a381c'),
+    makeSticker('an-13', '瀚佺粰骞哥', '瀚佺粰骞哥', '#ffeef5', '#7a2f43'),
     makeSticker('an-14', 'Always Yours', 'Always Yours', '#e8f0ff', '#243b6b', {
       fontScale: 0.32,
     }),
-    makeSticker('an-15', '锁定爱意', '锁定爱意', '#fce1ff', '#4d1a66'),
-    makeSticker('an-16', '约定终身', '约定终身', '#fff1d6', '#523423'),
+    makeSticker('an-15', '閿佸畾鐖辨剰', '閿佸畾鐖辨剰', '#fce1ff', '#4d1a66'),
+    makeSticker('an-16', '绾﹀畾缁堣韩', '绾﹀畾缁堣韩', '#fff1d6', '#523423'),
     makeSticker('an-17', 'Marry Me Again', 'Marry Me Again', '#e6f5ff', '#1f3e64', {
       fontScale: 0.3,
     }),
-    makeSticker('an-18', '恋人节', '恋人节', '#ffdfe5', '#7b2741'),
-    makeSticker('an-19', '我们的故事', '我们的故事', '#fff5f0', '#53302b'),
-    makeSticker('an-20', '幸福坐标', '幸福坐标', '#e4fff5', '#1c6b4a'),
-    makeSticker('an-21', '双人小宇宙', '双人小宇宙', '#e8f4ff', '#27406b'),
+    makeSticker('an-18', '鎭嬩汉鑺?, '鎭嬩汉鑺?, '#ffdfe5', '#7b2741'),
+    makeSticker('an-19', '鎴戜滑鐨勬晠浜?, '鎴戜滑鐨勬晠浜?, '#fff5f0', '#53302b'),
+    makeSticker('an-20', '骞哥鍧愭爣', '骞哥鍧愭爣', '#e4fff5', '#1c6b4a'),
+    makeSticker('an-21', '鍙屼汉灏忓畤瀹?, '鍙屼汉灏忓畤瀹?, '#e8f4ff', '#27406b'),
     makeSticker('an-22', 'Till The End', 'Till The End', '#f7ddff', '#472a63', {
       fontScale: 0.32,
     }),
-    makeSticker('an-23', '锁住此刻', '锁住此刻', '#ffeacd', '#6a3e1f'),
-    makeSticker('an-24', '520 纪念', '520 纪念', '#ffcfe1', '#5a2341'),
+    makeSticker('an-23', '閿佷綇姝ゅ埢', '閿佷綇姝ゅ埢', '#ffeacd', '#6a3e1f'),
+    makeSticker('an-24', '520 绾康', '520 绾康', '#ffcfe1', '#5a2341'),
     makeSticker('an-25', 'Best Pair Ever', 'Best Pair Ever', '#f1f8ff', '#1b3a57', {
       fontScale: 0.3,
     }),
@@ -256,92 +256,92 @@ const STICKER_LIBRARY = {
     makeSticker('pt-02', 'Dance All Night', 'Dance All Night', '#e2f4ff', '#1f3a64', {
       fontScale: 0.3,
     }),
-    makeSticker('pt-03', '狂欢开场', '狂欢开场', '#ffd9e8', '#551c41'),
+    makeSticker('pt-03', '鐙傛寮€鍦?, '鐙傛寮€鍦?, '#ffd9e8', '#551c41'),
     makeSticker('pt-04', 'Happy Hour', 'Happy Hour', '#fff5d6', '#6b351d'),
     makeSticker('pt-05', 'DJ On Fire', 'DJ On Fire', '#dff9ff', '#124d63', {
       fontScale: 0.3,
     }),
-    makeSticker('pt-06', '狂热现场', '狂热现场', '#f4e5ff', '#422b70'),
-    makeSticker('pt-07', '灯光闪耀', '灯光闪耀', '#ffe0f2', '#5a2151'),
+    makeSticker('pt-06', '鐙傜儹鐜板満', '鐙傜儹鐜板満', '#f4e5ff', '#422b70'),
+    makeSticker('pt-07', '鐏厜闂€€', '鐏厜闂€€', '#ffe0f2', '#5a2151'),
     makeSticker('pt-08', 'Cheer Up!', 'Cheer Up!', '#f8f0d8', '#663f22', {
       fontScale: 0.34,
     }),
-    makeSticker('pt-09', '舞池见', '舞池见', '#e6fff6', '#13694a'),
-    makeSticker('pt-10', '派对邀请', '派对邀请', '#ffe7d6', '#6a311c'),
+    makeSticker('pt-09', '鑸炴睜瑙?, '鑸炴睜瑙?, '#e6fff6', '#13694a'),
+    makeSticker('pt-10', '娲惧閭€璇?, '娲惧閭€璇?, '#ffe7d6', '#6a311c'),
     makeSticker('pt-11', 'Swag Night', 'Swag Night', '#dde6ff', '#1f2f66', {
       fontScale: 0.32,
     }),
-    makeSticker('pt-12', '微醺瞬间', '微醺瞬间', '#fbe2ff', '#4d1d66'),
-    makeSticker('pt-13', '最佳造型', '最佳造型', '#ffefd6', '#57422d'),
-    makeSticker('pt-14', '举杯同庆', '举杯同庆', '#ffe6eb', '#5b2e3c'),
-    makeSticker('pt-15', 'Let’s Groove', 'Let’s Groove', '#e2f0ff', '#1f3f68', {
+    makeSticker('pt-12', '寰喓鐬棿', '寰喓鐬棿', '#fbe2ff', '#4d1d66'),
+    makeSticker('pt-13', '鏈€浣抽€犲瀷', '鏈€浣抽€犲瀷', '#ffefd6', '#57422d'),
+    makeSticker('pt-14', '涓炬澂鍚屽簡', '涓炬澂鍚屽簡', '#ffe6eb', '#5b2e3c'),
+    makeSticker('pt-15', 'Let鈥檚 Groove', 'Let鈥檚 Groove', '#e2f0ff', '#1f3f68', {
       fontScale: 0.3,
     }),
     makeSticker('pt-16', 'Glow Up', 'Glow Up', '#fef3c7', '#614218'),
-    makeSticker('pt-17', '闪耀夜', '闪耀夜', '#f2deff', '#412d70'),
+    makeSticker('pt-17', '闂€€澶?, '闂€€澶?, '#f2deff', '#412d70'),
     makeSticker('pt-18', 'Team Celebration', 'Team Celebration', '#ddf9f0', '#185a4a', {
       fontScale: 0.28,
     }),
     makeSticker('pt-19', 'Best Squad', 'Best Squad', '#f1f8ff', '#1f3f5a', {
       fontScale: 0.3,
     }),
-    makeSticker('pt-20', '派对女王', '派对女王', '#ffe2f1', '#6a234b'),
-    makeSticker('pt-21', '派对男神', '派对男神', '#e5edff', '#1f3d76'),
-    makeSticker('pt-22', '午夜烟火', '午夜烟火', '#fff0d9', '#56341d'),
-    makeSticker('pt-23', '律动心跳', '律动心跳', '#e6faff', '#13506a'),
-    makeSticker('pt-24', '庆祝胜利', '庆祝胜利', '#f3ffea', '#29552a'),
+    makeSticker('pt-20', '娲惧濂崇帇', '娲惧濂崇帇', '#ffe2f1', '#6a234b'),
+    makeSticker('pt-21', '娲惧鐢风', '娲惧鐢风', '#e5edff', '#1f3d76'),
+    makeSticker('pt-22', '鍗堝鐑熺伀', '鍗堝鐑熺伀', '#fff0d9', '#56341d'),
+    makeSticker('pt-23', '寰嬪姩蹇冭烦', '寰嬪姩蹇冭烦', '#e6faff', '#13506a'),
+    makeSticker('pt-24', '搴嗙鑳滃埄', '搴嗙鑳滃埄', '#f3ffea', '#29552a'),
     makeSticker('pt-25', 'Sparkle Night', 'Sparkle Night', '#ffe6ff', '#4c1f73', {
       fontScale: 0.32,
     }),
   ],
   blessing: [
-    makeSticker('bl-01', '喜乐安康', '喜乐安康', '#fff3d9', '#5c3a17'),
+    makeSticker('bl-01', '鍠滀箰瀹夊悍', '鍠滀箰瀹夊悍', '#fff3d9', '#5c3a17'),
     makeSticker('bl-02', 'Good Vibes', 'Good Vibes', '#e6f8ff', '#1f3f6a', {
       fontScale: 0.32,
     }),
-    makeSticker('bl-03', '心想事成', '心想事成', '#ffe7f2', '#5b2a4a'),
-    makeSticker('bl-04', '好运连连', '好运连连', '#ffefd6', '#573f1f'),
+    makeSticker('bl-03', '蹇冩兂浜嬫垚', '蹇冩兂浜嬫垚', '#ffe7f2', '#5b2a4a'),
+    makeSticker('bl-04', '濂借繍杩炶繛', '濂借繍杩炶繛', '#ffefd6', '#573f1f'),
     makeSticker('bl-05', 'Shine Bright', 'Shine Bright', '#e2f4ff', '#21395c', {
       fontScale: 0.32,
     }),
-    makeSticker('bl-06', '梦想开花', '梦想开花', '#fff1ec', '#5c3228'),
+    makeSticker('bl-06', '姊︽兂寮€鑺?, '姊︽兂寮€鑺?, '#fff1ec', '#5c3228'),
     makeSticker('bl-07', 'Happy For You', 'Happy For You', '#f0f5ff', '#1e3f6b', {
       fontScale: 0.3,
     }),
-    makeSticker('bl-08', '光芒万丈', '光芒万丈', '#fef3c7', '#6b4218'),
-    makeSticker('bl-09', '勇敢闪耀', '勇敢闪耀', '#e7ffe9', '#205b35'),
-    makeSticker('bl-10', '加油打气', '加油打气', '#e8f8ff', '#205a7a'),
-    makeSticker('bl-11', '顺顺利利', '顺顺利利', '#fff0d6', '#6a3d1c'),
+    makeSticker('bl-08', '鍏夎姃涓囦笀', '鍏夎姃涓囦笀', '#fef3c7', '#6b4218'),
+    makeSticker('bl-09', '鍕囨暍闂€€', '鍕囨暍闂€€', '#e7ffe9', '#205b35'),
+    makeSticker('bl-10', '鍔犳补鎵撴皵', '鍔犳补鎵撴皵', '#e8f8ff', '#205a7a'),
+    makeSticker('bl-11', '椤洪『鍒╁埄', '椤洪『鍒╁埄', '#fff0d6', '#6a3d1c'),
     makeSticker('bl-12', 'Hugs & Wishes', 'Hugs & Wishes', '#ffe4f0', '#5d2352', {
       fontScale: 0.3,
     }),
-    makeSticker('bl-13', '平安喜乐', '平安喜乐', '#f3fff4', '#215c32'),
+    makeSticker('bl-13', '骞冲畨鍠滀箰', '骞冲畨鍠滀箰', '#f3fff4', '#215c32'),
     makeSticker('bl-14', 'Blessed Day', 'Blessed Day', '#e0f1ff', '#243f6a', {
       fontScale: 0.32,
     }),
-    makeSticker('bl-15', '花开有时', '花开有时', '#ffe9f0', '#6b2a43'),
-    makeSticker('bl-16', '喜气洋洋', '喜气洋洋', '#ffe8cc', '#5a2c17'),
-    makeSticker('bl-17', '拥抱当下', '拥抱当下', '#e7faff', '#245b70'),
-    makeSticker('bl-18', '心怀感恩', '心怀感恩', '#fff6df', '#5c3f20'),
-    makeSticker('bl-19', '开心就好', '开心就好', '#f1e8ff', '#382d72'),
-    makeSticker('bl-20', '幸福常伴', '幸福常伴', '#ffe4ec', '#632f41'),
-    makeSticker('bl-21', '好运锦囊', '好运锦囊', '#fff0dc', '#6d3a1b'),
-    makeSticker('bl-22', '心暖如光', '心暖如光', '#eafcff', '#246c7a'),
-    makeSticker('bl-23', '元气满满', '元气满满', '#f3fff0', '#1f6c3b'),
+    makeSticker('bl-15', '鑺卞紑鏈夋椂', '鑺卞紑鏈夋椂', '#ffe9f0', '#6b2a43'),
+    makeSticker('bl-16', '鍠滄皵娲嬫磱', '鍠滄皵娲嬫磱', '#ffe8cc', '#5a2c17'),
+    makeSticker('bl-17', '鎷ユ姳褰撲笅', '鎷ユ姳褰撲笅', '#e7faff', '#245b70'),
+    makeSticker('bl-18', '蹇冩€€鎰熸仼', '蹇冩€€鎰熸仼', '#fff6df', '#5c3f20'),
+    makeSticker('bl-19', '寮€蹇冨氨濂?, '寮€蹇冨氨濂?, '#f1e8ff', '#382d72'),
+    makeSticker('bl-20', '骞哥甯镐即', '骞哥甯镐即', '#ffe4ec', '#632f41'),
+    makeSticker('bl-21', '濂借繍閿﹀泭', '濂借繍閿﹀泭', '#fff0dc', '#6d3a1b'),
+    makeSticker('bl-22', '蹇冩殩濡傚厜', '蹇冩殩濡傚厜', '#eafcff', '#246c7a'),
+    makeSticker('bl-23', '鍏冩皵婊℃弧', '鍏冩皵婊℃弧', '#f3fff0', '#1f6c3b'),
     makeSticker('bl-24', 'New Chapter', 'New Chapter', '#e2f0ff', '#1f3a6a', {
       fontScale: 0.32,
     }),
-    makeSticker('bl-25', '每天都美好', '每天都美好', '#ffe8f5', '#5a2d4a'),
+    makeSticker('bl-25', '姣忓ぉ閮界編濂?, '姣忓ぉ閮界編濂?, '#ffe8f5', '#5a2d4a'),
   ],
   seasonal: [
-    makeSticker('sn-01', '春日出游', '春日出游', '#e8ffe9', '#1f6a3a'),
-    makeSticker('sn-02', '夏日海风', '夏日海风', '#dff5ff', '#13496b'),
-    makeSticker('sn-03', '秋夜星河', '秋夜星河', '#fff1d6', '#5a3a1f'),
-    makeSticker('sn-04', '冬日暖阳', '冬日暖阳', '#f5f1ff', '#2f3a6a'),
-    makeSticker('sn-05', '樱花限定', '樱花限定', '#ffe3f1', '#6a2c4d'),
-    makeSticker('sn-06', '仲夏派对', '仲夏派对', '#e6fff6', '#1c6b4a'),
-    makeSticker('sn-07', '收获满满', '收获满满', '#ffedd6', '#5f381f'),
-    makeSticker('sn-08', '雪花轻舞', '雪花轻舞', '#e5f2ff', '#234a74'),
+    makeSticker('sn-01', '鏄ユ棩鍑烘父', '鏄ユ棩鍑烘父', '#e8ffe9', '#1f6a3a'),
+    makeSticker('sn-02', '澶忔棩娴烽', '澶忔棩娴烽', '#dff5ff', '#13496b'),
+    makeSticker('sn-03', '绉嬪鏄熸渤', '绉嬪鏄熸渤', '#fff1d6', '#5a3a1f'),
+    makeSticker('sn-04', '鍐棩鏆栭槼', '鍐棩鏆栭槼', '#f5f1ff', '#2f3a6a'),
+    makeSticker('sn-05', '妯辫姳闄愬畾', '妯辫姳闄愬畾', '#ffe3f1', '#6a2c4d'),
+    makeSticker('sn-06', '浠插娲惧', '浠插娲惧', '#e6fff6', '#1c6b4a'),
+    makeSticker('sn-07', '鏀惰幏婊℃弧', '鏀惰幏婊℃弧', '#ffedd6', '#5f381f'),
+    makeSticker('sn-08', '闆姳杞昏垶', '闆姳杞昏垶', '#e5f2ff', '#234a74'),
     makeSticker('sn-09', 'Spring Bloom', 'Spring Bloom', '#f6ffe8', '#2f6a31', {
       fontScale: 0.32,
     }),
@@ -352,18 +352,18 @@ const STICKER_LIBRARY = {
     makeSticker('sn-12', 'Winter Magic', 'Winter Magic', '#e7efff', '#2a3d72', {
       fontScale: 0.3,
     }),
-    makeSticker('sn-13', '清凉一夏', '清凉一夏', '#e3fff6', '#176a56'),
-    makeSticker('sn-14', '落叶缤纷', '落叶缤纷', '#ffe7cc', '#6b3b1f'),
-    makeSticker('sn-15', '踏雪寻梅', '踏雪寻梅', '#f2f4ff', '#2d4574'),
-    makeSticker('sn-16', '暖春花事', '暖春花事', '#ffe9f6', '#6a2a4e'),
-    makeSticker('sn-17', '夏夜烟花', '夏夜烟花', '#e9f8ff', '#1f4f7a'),
-    makeSticker('sn-18', '秋收祝福', '秋收祝福', '#fff0de', '#5a381e'),
-    makeSticker('sn-19', '冬季热饮', '冬季热饮', '#f7efe6', '#5d3f24'),
-    makeSticker('sn-20', '立春好运', '立春好运', '#eaffea', '#1f6a37'),
-    makeSticker('sn-21', '盛夏派对', '盛夏派对', '#def6ff', '#154e78'),
-    makeSticker('sn-22', '金秋庆典', '金秋庆典', '#ffe7cf', '#6c421f'),
-    makeSticker('sn-23', '暖冬相聚', '暖冬相聚', '#f4f0ff', '#2e3f72'),
-    makeSticker('sn-24', '四季如春', '四季如春', '#e7ffe7', '#1f6b3a'),
+    makeSticker('sn-13', '娓呭噳涓€澶?, '娓呭噳涓€澶?, '#e3fff6', '#176a56'),
+    makeSticker('sn-14', '钀藉彾缂ょ悍', '钀藉彾缂ょ悍', '#ffe7cc', '#6b3b1f'),
+    makeSticker('sn-15', '韪忛洩瀵绘', '韪忛洩瀵绘', '#f2f4ff', '#2d4574'),
+    makeSticker('sn-16', '鏆栨槬鑺变簨', '鏆栨槬鑺变簨', '#ffe9f6', '#6a2a4e'),
+    makeSticker('sn-17', '澶忓鐑熻姳', '澶忓鐑熻姳', '#e9f8ff', '#1f4f7a'),
+    makeSticker('sn-18', '绉嬫敹绁濈', '绉嬫敹绁濈', '#fff0de', '#5a381e'),
+    makeSticker('sn-19', '鍐鐑ギ', '鍐鐑ギ', '#f7efe6', '#5d3f24'),
+    makeSticker('sn-20', '绔嬫槬濂借繍', '绔嬫槬濂借繍', '#eaffea', '#1f6a37'),
+    makeSticker('sn-21', '鐩涘娲惧', '鐩涘娲惧', '#def6ff', '#154e78'),
+    makeSticker('sn-22', '閲戠搴嗗吀', '閲戠搴嗗吀', '#ffe7cf', '#6c421f'),
+    makeSticker('sn-23', '鏆栧啲鐩歌仛', '鏆栧啲鐩歌仛', '#f4f0ff', '#2e3f72'),
+    makeSticker('sn-24', '鍥涘濡傛槬', '鍥涘濡傛槬', '#e7ffe7', '#1f6b3a'),
     makeSticker('sn-25', 'Seasonal Love', 'Seasonal Love', '#f0f3ff', '#253a70', {
       fontScale: 0.32,
     }),
@@ -468,7 +468,7 @@ function init() {
   updateTextButton();
   updatePlaceholder();
   updatePanStateClasses();
-  announce('请先上传一张照片开始创作。');
+  announce('璇风櫥褰曞悗寮€鍚浉鏈烘垨涓婁紶鐓х墖銆?);
 }
 
 function configureCanvases() {
@@ -487,65 +487,86 @@ function configureCanvases() {
 }
 
 function bindEvents() {
-  // Upload
   elements.uploadInput.addEventListener('change', handleUpload);
 
-  // Tool selectors
   elements.toolButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      if (!ensureAuthenticated()) return;
+      if (!ensureAuthenticated()) {
+        return;
+      }
       setTool(button.dataset.tool);
     });
   });
+
   elements.colorButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      if (!ensureAuthenticated()) return;
+      if (!ensureAuthenticated()) {
+        return;
+      }
       setColor(button.dataset.color);
     });
   });
+
   elements.sizeButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      if (!ensureAuthenticated()) return;
+      if (!ensureAuthenticated()) {
+        return;
+      }
       setSize(Number(button.dataset.size));
     });
   });
 
-  // Edit actions
   elements.undoButton.addEventListener('click', () => {
-    if (!ensureAuthenticated()) return;
+    if (!ensureAuthenticated()) {
+      return;
+    }
     undoDoodle();
   });
+
   elements.clearButton.addEventListener('click', () => {
-    if (!ensureAuthenticated()) return;
+    if (!ensureAuthenticated()) {
+      return;
+    }
     clearDoodle();
   });
+
   elements.exportButton.addEventListener('click', () => {
-    if (!ensureAuthenticated()) return;
+    if (!ensureAuthenticated()) {
+      return;
+    }
     exportImage();
   });
+
   elements.placeText.addEventListener('click', prepareTextPlacement);
 
-  // Stickers
   elements.stickerTabs.forEach((tab) => {
     tab.addEventListener('click', () => {
-      if (!ensureAuthenticated()) return;
+      if (!ensureAuthenticated()) {
+        return;
+      }
       state.stickerCategory = tab.dataset.stickerCategory;
       updateStickerCategory();
       renderStickerList();
       exitStickerMode(true);
     });
   });
+
   elements.stickerSize.addEventListener('input', (event) => {
     state.stickerSize = Number(event.target.value);
   });
+
   elements.exitStickerMode.addEventListener('click', () => {
     exitStickerMode();
   });
 
-  // Auth
   elements.authForm.addEventListener('submit', handleAuthSubmit);
-  elements.authToggle.addEventListener('click', toggleAuthMode);
-  elements.authSignOut.addEventListener('click', signOut);
+  elements.authToggle.addEventListener('click', () => {
+    toggleAuthMode();
+  });
+  elements.authSignOut.addEventListener('click', () => {
+    signOut();
+  });
+
   elements.socialButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const provider = button.dataset.provider;
@@ -553,22 +574,30 @@ function bindEvents() {
     });
   });
 
-  // Projects
-  elements.saveProject.addEventListener('click', handleSaveProject);
-  elements.newProject.addEventListener('click', handleNewProject);
+  elements.saveProject.addEventListener('click', () => {
+    handleSaveProject();
+  });
+  elements.newProject.addEventListener('click', () => {
+    handleNewProject();
+  });
   elements.projectList.addEventListener('click', handleProjectListInteraction);
 
-  // View controls
   elements.zoomIn.addEventListener('click', () => {
-    if (!ensureAuthenticated()) return;
+    if (!ensureAuthenticated()) {
+      return;
+    }
     adjustZoom(ZOOM_STEP);
   });
   elements.zoomOut.addEventListener('click', () => {
-    if (!ensureAuthenticated()) return;
+    if (!ensureAuthenticated()) {
+      return;
+    }
     adjustZoom(-ZOOM_STEP);
   });
   elements.resetView.addEventListener('click', () => {
-    if (!ensureAuthenticated()) return;
+    if (!ensureAuthenticated()) {
+      return;
+    }
     resetView(true);
   });
   elements.zoomSlider.addEventListener('input', (event) => {
@@ -579,27 +608,35 @@ function bindEvents() {
     handleZoomSlider(event);
   });
   elements.togglePan.addEventListener('click', () => {
-    if (!ensureAuthenticated()) return;
+    if (!ensureAuthenticated()) {
+      return;
+    }
     togglePanMode();
   });
 
-  elements.canvasWrapper.addEventListener('wheel', (event) => {
-    if (!authState.isAuthenticated) return;
-    handleCanvasWheel(event);
-  }, { passive: false });
+  elements.canvasWrapper.addEventListener(
+    'wheel',
+    (event) => {
+      if (!authState.isAuthenticated) {
+        return;
+      }
+      handleCanvasWheel(event);
+    },
+    { passive: false },
+  );
 
-  // Drawing
   doodleCanvas.addEventListener('pointerdown', startDrawing);
   doodleCanvas.addEventListener('pointermove', continueDrawing);
   doodleCanvas.addEventListener('pointerup', finishDrawing);
   doodleCanvas.addEventListener('pointerleave', finishDrawing);
   doodleCanvas.addEventListener('pointercancel', finishDrawing);
 
-  // Keyboard
   window.addEventListener('keydown', (event) => {
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'z') {
       event.preventDefault();
-      if (!ensureAuthenticated()) return;
+      if (!ensureAuthenticated()) {
+        return;
+      }
       undoDoodle();
     }
     if (event.key === 'Escape') {
@@ -610,12 +647,15 @@ function bindEvents() {
       handleSpaceDown(event);
     }
   });
+
   window.addEventListener('keyup', (event) => {
     if (event.code === 'Space') {
       handleSpaceUp(event);
     }
   });
-}function populateFontOptions() {
+}
+
+function populateFontOptions() {
   elements.fontSelect.innerHTML = '';
   FONT_OPTIONS.forEach((option) => {
     const opt = document.createElement('option');
@@ -639,7 +679,7 @@ function restoreAuth() {
       }
     }
   } catch (error) {
-    console.warn('无法恢复登录状态：', error);
+    console.warn('鏃犳硶鎭㈠鐧诲綍鐘舵€侊細', error);
   }
   updateAuthUI();
   updateViewControls();
@@ -649,12 +689,12 @@ function handleAuthSubmit(event) {
   const email = elements.authEmail.value.trim().toLowerCase();
   const password = elements.authPassword.value.trim();
   if (!validateEmail(email)) {
-    showAuthMessage('请输入有效的邮箱地址。');
+    showAuthMessage('璇疯緭鍏ユ湁鏁堢殑閭鍦板潃銆?);
     elements.authEmail.focus();
     return;
   }
   if (password.length < 6) {
-    showAuthMessage('密码至少 6 位，请重新输入。');
+    showAuthMessage('瀵嗙爜鑷冲皯 6 浣嶏紝璇烽噸鏂拌緭鍏ャ€?);
     elements.authPassword.focus();
     return;
   }
@@ -665,26 +705,26 @@ function handleAuthSubmit(event) {
 
   if (authState.mode === 'login') {
     if (!existingUser) {
-      showAuthMessage('未找到该邮箱，请先注册或使用社交登录。');
+      showAuthMessage('鏈壘鍒拌閭锛岃鍏堟敞鍐屾垨浣跨敤绀句氦鐧诲綍銆?);
       return;
     }
     if (!existingUser.password) {
-      showAuthMessage('该账号通过社交方式注册，请使用下方社交登录按钮。');
+      showAuthMessage('璇ヨ处鍙烽€氳繃绀句氦鏂瑰紡娉ㄥ唽锛岃浣跨敤涓嬫柟绀句氦鐧诲綍鎸夐挳銆?);
       return;
     }
     if (existingUser.password !== password) {
-      showAuthMessage('密码不正确，请重试。');
+      showAuthMessage('瀵嗙爜涓嶆纭紝璇烽噸璇曘€?);
       return;
     }
     users[index] = { ...existingUser, lastLoginAt: Date.now() };
     saveUsers(users);
     elements.authForm.reset();
-    completeLogin(users[index], '登录成功，开始创作吧！', '登录成功，请选择照片上传。');
+    completeLogin(users[index], '鐧诲綍鎴愬姛锛屽紑濮嬪垱浣滃惂锛?, '鐧诲綍鎴愬姛锛岃閫夋嫨鐓х墖鎴栧紑鍚浉鏈恒€?);
     return;
   }
 
   if (existingUser) {
-    showAuthMessage('该邮箱已注册，请直接登录或使用社交登录。');
+    showAuthMessage('璇ラ偖绠卞凡娉ㄥ唽锛岃鐩存帴鐧诲綍鎴栦娇鐢ㄧぞ浜ょ櫥褰曘€?);
     return;
   }
 
@@ -700,14 +740,14 @@ function handleAuthSubmit(event) {
   users.push(newUser);
   saveUsers(users);
   elements.authForm.reset();
-  completeLogin(newUser, '注册成功，已自动登录。', '注册成功，快来上传照片吧！');
+  completeLogin(newUser, '娉ㄥ唽鎴愬姛锛屽凡鑷姩鐧诲綍銆?, '娉ㄥ唽鎴愬姛锛屽揩鏉ユ媿鎽勬垨涓婁紶鐓х墖鍚э紒');
 }
 
 function toggleAuthMode() {
   authState.mode = authState.mode === 'login' ? 'register' : 'login';
   updateAuthMode();
   showAuthMessage(
-    authState.mode === 'login' ? '欢迎回来，请登录体验全部功能。' : '设置一个邮箱账号即可解锁创作功能。',
+    authState.mode === 'login' ? '娆㈣繋鍥炴潵锛岃鐧诲綍浣撻獙鍏ㄩ儴鍔熻兘銆? : '璁剧疆涓€涓偖绠辫处鍙峰嵆鍙В閿佸垱浣滃姛鑳姐€?,
   );
   elements.authPassword.value = '';
 }
@@ -745,10 +785,10 @@ function formatUserWelcome(user) {
     .filter(Boolean)
     .join(' / ');
   if (name) {
-    return providerLabels ? `${name}（${user.email}） · ${providerLabels}` : `${name}（${user.email}）`;
+    return providerLabels ? `${name}锛?{user.email}锛?路 ${providerLabels}` : `${name}锛?{user.email}锛塦;
   }
-  const base = `已登录：${user.email}`;
-  return providerLabels ? `${base} · ${providerLabels}` : base;
+  const base = `宸茬櫥褰曪細${user.email}`;
+  return providerLabels ? `${base} 路 ${providerLabels}` : base;
 }
 
 function updateAuthUI() {
@@ -762,7 +802,7 @@ function updateAuthUI() {
     elements.authWelcome.textContent = formatUserWelcome(authState.currentUser);
   }
   updateAuthMode();
-  elements.uploadInput.disabled = false;
+  elements.uploadInput.disabled = !authed;
   elements.placeText.disabled = !authed && !state.pendingText;
   elements.stickerSize.disabled = !authed;
   elements.exitStickerMode.disabled = !authed || state.mode !== 'sticker';
@@ -817,23 +857,22 @@ function updateAuthUI() {
     if (elements.projectName) {
       elements.projectName.value = '';
     }
-    showOverlay('请先上传一张照片开始创作。');
+    announce('璇风櫥褰曞悗寮€鍚浉鏈烘垨涓婁紶鐓х墖銆?);
   }
 }
 
 function updateAuthMode() {
   const isRegister = authState.mode === 'register';
-  elements.authSubmit.textContent = isRegister ? '注册并登录' : '登录';
-  elements.authToggle.textContent = isRegister ? '我已有账号，去登录' : '我需要注册';
+  elements.authSubmit.textContent = isRegister ? '娉ㄥ唽骞剁櫥褰? : '鐧诲綍';
+  elements.authToggle.textContent = isRegister ? '鎴戝凡鏈夎处鍙凤紝鍘荤櫥褰? : '鎴戦渶瑕佹敞鍐?;
 }
 
 function signOut() {
   authState.isAuthenticated = false;
   authState.currentUser = null;
   localStorage.removeItem(AUTH_ACTIVE_KEY);
-  showAuthMessage('已退出，请重新登录。');
-  announce('已退出登录，作品已清空。');
-  stopCamera();
+  showAuthMessage('宸查€€鍑猴紝璇烽噸鏂扮櫥褰曘€?);
+  announce('宸查€€鍑虹櫥褰曪紝浣滃搧宸叉竻绌恒€?);
   state.hasPhoto = false;
   state.projects = [];
   state.activeProjectId = null;
@@ -868,7 +907,7 @@ function loadUsers() {
       return data.map(normalizeUser).filter(Boolean);
     }
   } catch (error) {
-    console.warn('读取用户数据失败：', error);
+    console.warn('璇诲彇鐢ㄦ埛鏁版嵁澶辫触锛?, error);
   }
   return [];
 }
@@ -878,7 +917,7 @@ function saveUsers(users) {
     const serialized = users.map(serializeUser);
     localStorage.setItem(AUTH_USERS_KEY, JSON.stringify(serialized));
   } catch (error) {
-    console.warn('保存用户数据失败：', error);
+    console.warn('淇濆瓨鐢ㄦ埛鏁版嵁澶辫触锛?, error);
   }
 }
 
@@ -921,7 +960,7 @@ function loadProjectStore() {
       return data;
     }
   } catch (error) {
-    console.warn('读取作品数据失败：', error);
+    console.warn('璇诲彇浣滃搧鏁版嵁澶辫触锛?, error);
   }
   return {};
 }
@@ -930,7 +969,7 @@ function saveProjectStore(store) {
   try {
     localStorage.setItem(PROJECT_STORE_KEY, JSON.stringify(store));
   } catch (error) {
-    console.warn('保存作品数据失败：', error);
+    console.warn('淇濆瓨浣滃搧鏁版嵁澶辫触锛?, error);
   }
 }
 
@@ -966,7 +1005,7 @@ function normalizeProject(raw) {
   const view = raw.view && typeof raw.view === 'object' ? raw.view : {};
   return {
     id: raw.id,
-    name: typeof raw.name === 'string' && raw.name.trim() ? raw.name.trim() : '未命名作品',
+    name: typeof raw.name === 'string' && raw.name.trim() ? raw.name.trim() : '鏈懡鍚嶄綔鍝?,
     photo: typeof raw.photo === 'string' ? raw.photo : '',
     doodle: typeof raw.doodle === 'string' ? raw.doodle : '',
     updatedAt: typeof raw.updatedAt === 'number' ? raw.updatedAt : Date.now(),
@@ -995,10 +1034,10 @@ function serializeProject(project) {
 
 function deriveDisplayName(email) {
   if (!email) {
-    return '创作者';
+    return '鍒涗綔鑰?;
   }
   const [name] = email.split('@');
-  return name || '创作者';
+  return name || '鍒涗綔鑰?;
 }
 
 function handleSaveProject() {
@@ -1007,8 +1046,8 @@ function handleSaveProject() {
   }
   if (!state.hasPhoto) {
     highlightPlaceholder();
-    showAuthMessage('请先上传照片，再保存作品。');
-    announce('需先载入照片后才能保存作品。');
+    showAuthMessage('璇峰厛鎷嶆憚鎴栦笂浼犵収鐗囷紝鍐嶄繚瀛樹綔鍝併€?);
+    announce('闇€鍏堣浇鍏ョ収鐗囧悗鎵嶈兘淇濆瓨浣滃搧銆?);
     return;
   }
   let projectName = elements.projectName?.value.trim() ?? '';
@@ -1018,7 +1057,7 @@ function handleSaveProject() {
       .getMinutes()
       .toString()
       .padStart(2, '0')}`;
-    projectName = `未命名作品 ${dateText}`;
+    projectName = `鏈懡鍚嶄綔鍝?${dateText}`;
   }
   let photoData = '';
   let doodleData = '';
@@ -1026,8 +1065,8 @@ function handleSaveProject() {
     photoData = photoCanvas.toDataURL('image/png');
     doodleData = doodleCanvas.toDataURL('image/png');
   } catch (error) {
-    console.warn('保存作品时生成图像数据失败：', error);
-    announce('保存失败，浏览器不支持导出当前画布。');
+    console.warn('淇濆瓨浣滃搧鏃剁敓鎴愬浘鍍忔暟鎹け璐ワ細', error);
+    announce('淇濆瓨澶辫触锛屾祻瑙堝櫒涓嶆敮鎸佸鍑哄綋鍓嶇敾甯冦€?);
     return;
   }
   const project = {
@@ -1052,8 +1091,8 @@ function handleSaveProject() {
   state.activeProjectId = project.id;
   saveProjectsForCurrentUser();
   renderProjectList();
-  showAuthMessage('作品已保存至本地作品库。');
-  announce('当前作品已保存，可在列表中重新加载。');
+  showAuthMessage('浣滃搧宸蹭繚瀛樿嚦鏈湴浣滃搧搴撱€?);
+  announce('褰撳墠浣滃搧宸蹭繚瀛橈紝鍙湪鍒楄〃涓噸鏂板姞杞姐€?);
 }
 
 function handleNewProject() {
@@ -1062,7 +1101,7 @@ function handleNewProject() {
   }
   const shouldConfirm = state.hasPhoto || doodleHistory.length > 0;
   if (shouldConfirm) {
-    const proceed = window.confirm('当前作品尚未保存，确定要创建新的空白作品吗？');
+    const proceed = window.confirm('褰撳墠浣滃搧灏氭湭淇濆瓨锛岀‘瀹氳鍒涘缓鏂扮殑绌虹櫧浣滃搧鍚楋紵');
     if (!proceed) {
       return;
     }
@@ -1076,8 +1115,8 @@ function handleNewProject() {
   }
   resetView();
   updatePlaceholder();
-  showAuthMessage('已创建新的空白作品。');
-  announce('新的空白作品已就绪，请先上传照片。');
+  showAuthMessage('宸插垱寤烘柊鐨勭┖鐧戒綔鍝併€?);
+  announce('鏂扮殑绌虹櫧浣滃搧宸插氨缁紝璇峰厛鎷嶆憚鎴栦笂浼犵収鐗囥€?);
 }
 
 function handleProjectListInteraction(event) {
@@ -1106,14 +1145,14 @@ function renderProjectList() {
   if (!authState.isAuthenticated) {
     const hint = document.createElement('p');
     hint.className = 'hint-text';
-    hint.textContent = '登录后可保存作品，列表会出现在这里。';
+    hint.textContent = '鐧诲綍鍚庡彲淇濆瓨浣滃搧锛屽垪琛ㄤ細鍑虹幇鍦ㄨ繖閲屻€?;
     container.appendChild(hint);
     return;
   }
   if (!state.projects.length) {
     const empty = document.createElement('p');
     empty.className = 'hint-text';
-    empty.textContent = '暂无保存的作品，创作完成后点击“保存进度”。';
+    empty.textContent = '鏆傛棤淇濆瓨鐨勪綔鍝侊紝鍒涗綔瀹屾垚鍚庣偣鍑烩€滀繚瀛樿繘搴︹€濄€?;
     container.appendChild(empty);
     return;
   }
@@ -1143,12 +1182,12 @@ function renderProjectList() {
       loadButton.type = 'button';
       loadButton.className = 'project-action';
       loadButton.dataset.projectAction = 'load';
-      loadButton.textContent = '载入';
+      loadButton.textContent = '杞藉叆';
       const deleteButton = document.createElement('button');
       deleteButton.type = 'button';
       deleteButton.className = 'project-action delete';
       deleteButton.dataset.projectAction = 'delete';
-      deleteButton.textContent = '删除';
+      deleteButton.textContent = '鍒犻櫎';
       actions.appendChild(loadButton);
       actions.appendChild(deleteButton);
       item.appendChild(info);
@@ -1160,7 +1199,7 @@ function renderProjectList() {
 function loadProjectById(projectId) {
   const project = state.projects.find((item) => item.id === projectId);
   if (!project) {
-    announce('未找到对应的作品记录。');
+    announce('鏈壘鍒板搴旂殑浣滃搧璁板綍銆?);
     return;
   }
   const tasks = [loadImageFromSource(project.photo)];
@@ -1190,11 +1229,11 @@ function loadProjectById(projectId) {
         elements.projectName.value = project.name;
       }
       renderProjectList();
-      announce(`已载入作品：${project.name}`);
+      announce(`宸茶浇鍏ヤ綔鍝侊細${project.name}`);
     })
     .catch((error) => {
-      console.warn('载入作品失败：', error);
-      announce('作品载入失败，请稍后再试。');
+      console.warn('杞藉叆浣滃搧澶辫触锛?, error);
+      announce('浣滃搧杞藉叆澶辫触锛岃绋嶅悗鍐嶈瘯銆?);
     });
 }
 
@@ -1207,9 +1246,9 @@ function deleteProject(projectId) {
   saveProjectsForCurrentUser();
   if (state.activeProjectId === projectId) {
     state.activeProjectId = null;
-    showAuthMessage('已删除该作品，当前画面仍保留，可继续编辑或另存。');
+    showAuthMessage('宸插垹闄よ浣滃搧锛屽綋鍓嶇敾闈粛淇濈暀锛屽彲缁х画缂栬緫鎴栧彟瀛樸€?);
   } else {
-    showAuthMessage('作品已从列表中移除。');
+    showAuthMessage('浣滃搧宸蹭粠鍒楄〃涓Щ闄ゃ€?);
   }
   renderProjectList();
   if (removed && elements.projectName && state.activeProjectId === null) {
@@ -1226,18 +1265,18 @@ function formatProjectTimestamp(timestamp) {
   const hour = 60 * minute;
   const day = 24 * hour;
   if (diff < minute) {
-    return '刚刚更新';
+    return '鍒氬垰鏇存柊';
   }
   if (diff < hour) {
     const value = Math.max(1, Math.floor(diff / minute));
-    return `${value} 分钟前更新`;
+    return `${value} 鍒嗛挓鍓嶆洿鏂癭;
   }
   if (diff < day) {
     const value = Math.max(1, Math.floor(diff / hour));
-    return `${value} 小时前更新`;
+    return `${value} 灏忔椂鍓嶆洿鏂癭;
   }
   const date = new Date(timestamp);
-  return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} 更新`;
+  return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} 鏇存柊`;
 }
 
 function loadImageFromSource(source) {
@@ -1267,7 +1306,7 @@ function ensureAuthenticated() {
     }
     return true;
   }
-  showAuthMessage('请先登录以使用全部创作功能。');
+  showAuthMessage('璇峰厛鐧诲綍浠ヤ娇鐢ㄥ叏閮ㄥ垱浣滃姛鑳姐€?);
   elements.authEmail.focus();
   return false;
 }
@@ -1279,20 +1318,20 @@ function showAuthMessage(message) {
 function handleSocialSignIn(providerKey) {
   const provider = SOCIAL_PROVIDERS[providerKey];
   if (!provider) {
-    showAuthMessage('暂不支持该社交登录方式。');
+    showAuthMessage('鏆備笉鏀寔璇ョぞ浜ょ櫥褰曟柟寮忋€?);
     return;
   }
-  const emailInput = window.prompt(`使用 ${provider.label} 登录，请输入邮箱地址：`);
+  const emailInput = window.prompt(`浣跨敤 ${provider.label} 鐧诲綍锛岃杈撳叆閭鍦板潃锛歚);
   if (!emailInput) {
-    showAuthMessage('已取消社交登录。');
+    showAuthMessage('宸插彇娑堢ぞ浜ょ櫥褰曘€?);
     return;
   }
   const email = emailInput.trim().toLowerCase();
   if (!validateEmail(email)) {
-    showAuthMessage('请输入有效的邮箱地址。');
+    showAuthMessage('璇疯緭鍏ユ湁鏁堢殑閭鍦板潃銆?);
     return;
   }
-  let displayNameInput = window.prompt('可选：输入一个创作时显示的昵称（留空则使用邮箱前缀）');
+  let displayNameInput = window.prompt('鍙€夛細杈撳叆涓€涓垱浣滄椂鏄剧ず鐨勬樀绉帮紙鐣欑┖鍒欎娇鐢ㄩ偖绠卞墠缂€锛?);
   if (displayNameInput === null) {
     displayNameInput = '';
   }
@@ -1315,8 +1354,8 @@ function handleSocialSignIn(providerKey) {
     saveUsers(users);
     completeLogin(
       updatedUser,
-      `${provider.label} 登录成功，开始创作吧！`,
-      `${provider.label} 登录成功，可继续创作。`,
+      `${provider.label} 鐧诲綍鎴愬姛锛屽紑濮嬪垱浣滃惂锛乣,
+      `${provider.label} 鐧诲綍鎴愬姛锛屽彲缁х画鍒涗綔銆俙,
     );
     return;
   }
@@ -1333,21 +1372,62 @@ function handleSocialSignIn(providerKey) {
   saveUsers(users);
   completeLogin(
     newUser,
-    `${provider.label} 登录成功，欢迎加入！`,
-    `${provider.label} 登录成功，可继续创作。`,
+    `${provider.label} 鐧诲綍鎴愬姛锛屾杩庡姞鍏ワ紒`,
+    `${provider.label} 鐧诲綍鎴愬姛锛屽彲缁х画鍒涗綔銆俙,
   );
 }
 
 
 
-async function startCamera() { return Promise.resolve(); }function handleUpload(event) {
+
+  ,
+        height: { ideal: 1080 },
+      },
+      audio: false,
+    });
+    elements.video.srcObject = stream;
+    await playVideo(elements.video);
+    
+    announce('鎽勫儚澶村凡寮€鍚紝鍙互鐐瑰嚮鈥滄媿鎽勭収鐗団€濇崟鎹夌敾闈€?);
+  } catch (error) {
+    const message = error?.name === 'NotAllowedError'
+      ? '璁块棶鎽勫儚澶磋鎷掔粷锛岃妫€鏌ユ祻瑙堝櫒鏉冮檺璁剧疆銆?
+      : `鏃犳硶璁块棶鎽勫儚澶达細${error?.message ?? '鏈煡閿欒'}`;
+    announce(message);
+    throw error;
+  } finally {
+  }
+}
+
+function disableCameraControls() {
+  elements.stopCamera.disabled = true;
+}
+
+  if (elements.video.srcObject) {
+    elements.video.srcObject = null;
+  }
+  announce('宸插叧闂憚鍍忓ご锛屽闇€閲嶆柊鎷嶆憚璇风偣鍑烩€滃紑鍚浉鏈衡€濄€?);
+}
+
+  });
+}
+
+  drawSourceToPhoto(elements.video, elements.video.videoWidth, elements.video.videoHeight);
+  resetDoodleCanvas();
+  announce('宸叉崟鎹夊綋鍓嶇敾闈紝蹇潵缁樺埗浣犵殑绁濈鍚э紒');
+}
+
+function handleUpload(event) {
   const [file] = event.target.files;
-  
+  if (!ensureAuthenticated()) {
+    event.target.value = '';
+    return;
+  }
   if (!file) {
     return;
   }
   if (file.size > 10 * 1024 * 1024) {
-    announce('图片超过 10 MB 限制，请选择更小的文件。');
+    announce('鍥剧墖瓒呰繃 10 MB 闄愬埗锛岃閫夋嫨鏇村皬鐨勬枃浠躲€?);
     event.target.value = '';
     return;
   }
@@ -1357,15 +1437,15 @@ async function startCamera() { return Promise.resolve(); }function handleUpload(
     image.onload = () => {
       drawSourceToPhoto(image, image.width, image.height);
       resetDoodleCanvas();
-      announce('图片已载入，可以继续创作。');
+      announce('鍥剧墖宸茶浇鍏ワ紝鍙互缁х画鍒涗綔銆?);
     };
     image.onerror = () => {
-      announce('图片加载失败，请尝试其他文件或稍后再试。');
+      announce('鍥剧墖鍔犺浇澶辫触锛岃灏濊瘯鍏朵粬鏂囦欢鎴栫◢鍚庡啀璇曘€?);
     };
     image.src = String(loadEvent.target?.result);
   };
   reader.onerror = () => {
-    announce('读取图片文件时发生错误，请重新选择文件。');
+    announce('璇诲彇鍥剧墖鏂囦欢鏃跺彂鐢熼敊璇紝璇烽噸鏂伴€夋嫨鏂囦欢銆?);
   };
   reader.readAsDataURL(file);
   event.target.value = '';
@@ -1472,7 +1552,7 @@ function selectSticker(stickerId) {
   cancelTextPlacement();
   updateStickerSelection();
   updateStickerMode();
-  announce('贴纸放置模式已开启，点击画布即可放置。');
+  announce('璐寸焊鏀剧疆妯″紡宸插紑鍚紝鐐瑰嚮鐢诲竷鍗冲彲鏀剧疆銆?);
 }
 
 function updateStickerSelection() {
@@ -1488,7 +1568,7 @@ function updateStickerMode(silent = false) {
   const isStickerMode = state.mode === 'sticker' && state.selectedStickerId;
   elements.exitStickerMode.disabled = !isStickerMode || !authState.isAuthenticated;
   if (!silent && !isStickerMode) {
-    announce('已退出贴纸放置模式。');
+    announce('宸查€€鍑鸿创绾告斁缃ā寮忋€?);
   }
 }
 
@@ -1504,7 +1584,7 @@ function exitStickerMode(silent = false) {
 
 function updateTextButton() {
   if (!state.pendingText) {
-    elements.placeText.textContent = '点击画布放置';
+    elements.placeText.textContent = '鐐瑰嚮鐢诲竷鏀剧疆';
     elements.placeText.disabled = !authState.isAuthenticated;
   }
 }
@@ -1515,12 +1595,12 @@ function prepareTextPlacement() {
   }
   if (!state.hasPhoto) {
     highlightPlaceholder();
-    announce('请先上传一张照片。');
+    announce('璇峰厛鎷嶆憚鎴栦笂浼犱竴寮犵収鐗囥€?);
     return;
   }
   const text = elements.textContent.value.trim();
   if (!text) {
-    announce('请输入想要放置的文本内容。');
+    announce('璇疯緭鍏ユ兂瑕佹斁缃殑鏂囨湰鍐呭銆?);
     elements.textContent.focus();
     return;
   }
@@ -1538,9 +1618,9 @@ function prepareTextPlacement() {
   state.selectedStickerId = null;
   updateStickerSelection();
   updateStickerMode(true);
-  elements.placeText.textContent = '在画布点击放置…';
+  elements.placeText.textContent = '鍦ㄧ敾甯冪偣鍑绘斁缃€?;
   elements.placeText.disabled = true;
-  announce('文本放置模式已开启，请在画布上点击位置。');
+  announce('鏂囨湰鏀剧疆妯″紡宸插紑鍚紝璇峰湪鐢诲竷涓婄偣鍑讳綅缃€?);
 }
 
 function cancelTextPlacement() {
@@ -1555,7 +1635,7 @@ function cancelTextPlacement() {
 
 function startDrawing(event) {
   if (!authState.isAuthenticated) {
-    showAuthMessage('请先登录以进行涂鸦、文本或贴纸操作。');
+    showAuthMessage('璇峰厛鐧诲綍浠ヨ繘琛屾秱楦︺€佹枃鏈垨璐寸焊鎿嶄綔銆?);
     elements.authEmail.focus();
     return;
   }
@@ -1564,7 +1644,7 @@ function startDrawing(event) {
   }
   if (!state.hasPhoto) {
     highlightPlaceholder();
-    announce('请先上传一张照片。');
+    announce('璇峰厛鎷嶆憚鎴栦笂浼犱竴寮犵収鐗囥€?);
     return;
   }
   if (event.isPrimary === false && event.pointerType !== 'mouse') {
@@ -1593,7 +1673,7 @@ function startDrawing(event) {
   try {
     doodleCanvas.setPointerCapture(event.pointerId);
   } catch (error) {
-    /* 某些浏览器在多指触控时可能不支持 Pointer Capture，可忽略 */
+    /* 鏌愪簺娴忚鍣ㄥ湪澶氭寚瑙︽帶鏃跺彲鑳戒笉鏀寔 Pointer Capture锛屽彲蹇界暐 */
   }
 
   if (state.tool === 'starHeart') {
@@ -1669,7 +1749,7 @@ function finishDrawing(event) {
   try {
     doodleCanvas.releasePointerCapture(event.pointerId);
   } catch (error) {
-    /* 忽略 Pointer Capture 释放异常 */
+    /* 蹇界暐 Pointer Capture 閲婃斁寮傚父 */
   }
 }
 
@@ -1732,7 +1812,7 @@ function placeText(point) {
   state.pendingText = null;
   state.mode = 'draw';
   updateTextButton();
-  announce('文本已放置在画布上。');
+  announce('鏂囨湰宸叉斁缃湪鐢诲竷涓娿€?);
 }
 
 function placeSticker(point) {
@@ -1741,7 +1821,7 @@ function placeSticker(point) {
     return;
   }
   drawSticker(point.x, point.y, sticker, state.stickerSize);
-  announce('贴纸已放置，可继续点击添加更多。');
+  announce('璐寸焊宸叉斁缃紝鍙户缁偣鍑绘坊鍔犳洿澶氥€?);
 }
 
 function getSelectedSticker() {
@@ -1869,12 +1949,12 @@ function drawRoundedRect(ctx, x, y, width, height, radius, fillStyle, strokeStyl
 
 function undoDoodle() {
   if (!doodleHistory.length) {
-    announce('没有可撤销的笔画。');
+    announce('娌℃湁鍙挙閿€鐨勭瑪鐢汇€?);
     return;
   }
   const snapshot = doodleHistory.pop();
   doodleCtx.putImageData(snapshot, 0, 0);
-  announce('已撤销上一笔操作。');
+  announce('宸叉挙閿€涓婁竴绗旀搷浣溿€?);
 }
 
 function clearDoodle() {
@@ -1885,7 +1965,7 @@ function clearDoodle() {
   clearCanvas(doodleCtx);
   cancelTextPlacement();
   exitStickerMode(true);
-  announce('画布已清空，可以重新开始创作。');
+  announce('鐢诲竷宸叉竻绌猴紝鍙互閲嶆柊寮€濮嬪垱浣溿€?);
 }
 
 function resetDoodleCanvas() {
@@ -1897,7 +1977,7 @@ function resetDoodleCanvas() {
 
 function exportImage() {
   if (!state.hasPhoto) {
-    announce('请先上传一张照片，再导出作品。');
+    announce('璇峰厛鎷嶆憚鎴栦笂浼犱竴寮犵収鐗囷紝鍐嶅鍑轰綔鍝併€?);
     highlightPlaceholder();
     return;
   }
@@ -1914,7 +1994,7 @@ function exportImage() {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-  announce('PNG 文件已生成，可直接保存或分享。');
+  announce('PNG 鏂囦欢宸茬敓鎴愶紝鍙洿鎺ヤ繚瀛樻垨鍒嗕韩銆?);
 }
 
 function pushHistory() {
@@ -1925,7 +2005,7 @@ function pushHistory() {
       doodleHistory.shift();
     }
   } catch (error) {
-    console.warn('无法记录撤销历史：', error);
+    console.warn('鏃犳硶璁板綍鎾ら攢鍘嗗彶锛?, error);
   }
 }
 
@@ -2035,7 +2115,7 @@ function resetView(announceReset = false) {
   applyViewTransform();
   updateViewControls();
   if (announceReset) {
-    announce('画布视图已重置。');
+    announce('鐢诲竷瑙嗗浘宸查噸缃€?);
   }
 }
 
@@ -2083,7 +2163,7 @@ function maybeBeginPan(event) {
   try {
     doodleCanvas.setPointerCapture(event.pointerId);
   } catch (error) {
-    /* 某些浏览器在多指操作时可能不支持 Pointer Capture，可忽略 */
+    /* 鏌愪簺娴忚鍣ㄥ湪澶氭寚鎿嶄綔鏃跺彲鑳戒笉鏀寔 Pointer Capture锛屽彲蹇界暐 */
   }
   return true;
 }
@@ -2114,7 +2194,7 @@ function endPan(event) {
   try {
     doodleCanvas.releasePointerCapture(event.pointerId);
   } catch (error) {
-    /* 忽略 Pointer Capture 释放失败 */
+    /* 蹇界暐 Pointer Capture 閲婃斁澶辫触 */
   }
 }
 
@@ -2186,7 +2266,20 @@ function hexToRgba(hex, alpha) {
 }
 
 function announce(message) {
-  elements.status.textContent = message;
+  try {
+    const placeholder = elements.canvasPlaceholder;
+    if (!placeholder) return;
+    const p = placeholder.querySelector('p') || placeholder;
+    p.textContent = String(message);
+    placeholder.classList.remove('hidden');
+    placeholder.classList.add('flash');
+    setTimeout(() => {
+      placeholder.classList.remove('flash');
+      if (state.hasPhoto) {
+        placeholder.classList.add('hidden');
+      }
+    }, 900);
+  } catch {}
 }
 
 function updatePlaceholder() {
@@ -2202,11 +2295,8 @@ function highlightPlaceholder() {
   }, 900);
 }
 
-function hideOverlay() {
-  elements.overlay.classList.add('hidden');
-}
 
-function showOverlay(message) {
+function announce(message) {
   elements.overlay.innerHTML = `<p>${message}</p>`;
   elements.overlay.classList.remove('hidden');
 }
@@ -2272,22 +2362,6 @@ function clamp(value, min, max) {
 }
 
 init();
-
-// Status helpers
-function hideOverlay() {
-  try {
-    if (elements && elements.overlay) elements.overlay.classList.add('hidden');
-  } catch {}
-}
-function showOverlay(message) {
-  try {
-    if (elements && elements.overlay) {
-      elements.overlay.innerHTML = `<p>${String(message)}</p>`;
-      elements.overlay.classList.remove('hidden');
-    }
-  } catch {}
-}
-
 
 
 
