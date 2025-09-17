@@ -107,9 +107,9 @@ const state = {
 };
 
 const authState = {
-  mode: 'login',
-  isAuthenticated: false,
-  currentUser: null,
+  mode: 'guest',
+  isAuthenticated: true,
+  currentUser: { email: 'guest@local', displayName: '访客', providers: [] },
 };
 
 const elements = {
@@ -936,11 +936,7 @@ function loadImageFromSource(source) {
 }
 
 
-function ensureAuthenticated() {
-  if (authState.isAuthenticated) {
-    if (elements.authMessage.textContent) {
-      showAuthMessage('');
-    }
+function ensureAuthenticated() { if (elements.authMessage && elements.authMessage.textContent) { showAuthMessage(''); } return true; }
     return true;
   }
   showAuthMessage('璇峰厛鐧诲綍浠ヤ娇鐢ㄥ叏閮ㄥ垱浣滃姛鑳姐€?);
@@ -1919,6 +1915,7 @@ function clamp(value, min, max) {
 }
 
 init();
+
 
 
 
