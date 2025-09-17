@@ -12,18 +12,71 @@
         <div class="header-content">
           <h1>友好相机 · 星心涂鸦实验室</h1>
           <p>
-            使用友好相机捕捉美好瞬间，配合星心笔刷释放创意，并一键导出成品。
+            注册登录后，即可使用友好相机捕捉瞬间、用星心笔刷或贴纸装饰、放置节日文案，并导出1080p成品。
           </p>
         </div>
       </header>
 
       <main class="app-main">
         <section class="panel controls" aria-label="操作面板">
+          <div class="card auth-card" id="authCard">
+            <div class="card-header">
+              <h2>邮箱注册 / 登录</h2>
+              <p>邮箱账号仅保存在本地浏览器，用于解锁创作体验。</p>
+            </div>
+            <form id="authForm" novalidate>
+              <div class="field-group">
+                <label for="authEmail">邮箱地址</label>
+                <input
+                  id="authEmail"
+                  type="email"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+              <div class="field-group">
+                <label for="authPassword">密码</label>
+                <input
+                  id="authPassword"
+                  type="password"
+                  placeholder="至少 6 位字符"
+                  autocomplete="current-password"
+                  minlength="6"
+                  required
+                />
+              </div>
+              <div class="auth-actions">
+                <button id="authSubmit" type="submit">登录</button>
+                <button id="authToggle" type="button" class="secondary">我需要注册</button>
+              </div>
+              <p class="hint-text" id="authMessage" role="status" aria-live="polite"></p>
+            </form>
+            <div class="social-login" id="socialLogin" aria-label="社交登录入口">
+              <p>或使用社交账号快速登录：</p>
+              <div class="social-buttons">
+                <button type="button" class="social-button google" data-provider="google">
+                  <span class="social-icon" aria-hidden="true">G</span>
+                  使用 Google 登录
+                </button>
+                <button type="button" class="social-button apple" data-provider="apple">
+                  <span class="social-icon" aria-hidden="true"></span>
+                  使用 Apple 登录
+                </button>
+              </div>
+              <p class="hint-text">社交登录同样保存在本地，用于快速解锁全部功能。</p>
+            </div>
+            <div class="auth-success is-hidden" id="authSuccess">
+              <p id="authWelcome"></p>
+              <button id="authSignOut" type="button" class="secondary">退出登录</button>
+            </div>
+          </div>
+
           <div class="card camera-card">
             <div class="card-header">
               <h2>友好相机</h2>
               <p id="cameraStatus" role="status" aria-live="polite">
-                正在等待摄像头权限或手动启动。
+                请登录后开启相机或上传照片。
               </p>
             </div>
             <div class="video-shell">
@@ -35,7 +88,7 @@
                 muted
               ></video>
               <div class="video-overlay" id="cameraOverlay">
-                <p>请允许浏览器访问摄像头，然后对准镜头，自信微笑 ✨</p>
+                <p>允许浏览器访问摄像头，或先行登录后选择本地照片。</p>
               </div>
             </div>
             <div class="button-group">
@@ -48,45 +101,98 @@
           <div class="card upload-card">
             <div class="card-header">
               <h2>替换照片</h2>
-              <p>无法使用相机？选择本地图片同样可以继续涂鸦创作。</p>
+              <p>登录后可上传 JPG/PNG（≤ 10 MB）继续创作。</p>
             </div>
             <label class="upload-input">
-              <span>上传 JPG 或 PNG（≤ 10 MB）</span>
+              <span>上传照片</span>
               <input id="uploadInput" type="file" accept="image/png, image/jpeg" />
             </label>
           </div>
 
-          <div class="card brush-card">
+          <div class="card project-card">
             <div class="card-header">
-              <h2>星心涂鸦</h2>
-              <p>选择笔刷风格与色彩，开始在照片上描绘祝福。</p>
+              <h2>作品管理</h2>
+              <p>为作品命名并保存，随时切换不同的庆祝主题。</p>
             </div>
             <div class="field-group">
-              <label for="toolSelect">笔刷模式</label>
-              <select id="toolSelect" aria-label="笔刷模式">
-                <option value="starHeart">星心（星星与爱心交替）</option>
-                <option value="freehand">自由画笔</option>
-              </select>
+              <label for="projectName">当前作品名称</label>
+              <input
+                id="projectName"
+                type="text"
+                placeholder="例如：小王生日派对"
+                maxlength="42"
+              />
             </div>
-            <div class="field-row">
-              <div class="field-group">
-                <label for="colorPicker">颜色</label>
-                <input id="colorPicker" type="color" value="#ff4b6e" />
+            <div class="button-group compact">
+              <button id="saveProject" type="button">保存进度</button>
+              <button id="newProject" type="button" class="secondary">新建空白作品</button>
+            </div>
+            <div class="project-list" id="projectList" role="listbox" aria-label="已保存的作品"></div>
+            <p class="hint-text">每个账号最多保存 10 个作品，数据仅存储在本地浏览器。</p>
+          </div>
+
+          <div class="card brush-card">
+            <div class="card-header">
+              <h2>星心涂鸦与画笔</h2>
+              <p>选择星心笔、画笔、马克笔或荧光笔，搭配预设颜色和粗细继续创意。</p>
+            </div>
+            <div class="tool-toggle" role="group" aria-label="涂鸦工具">
+              <button type="button" class="tool-button active" data-tool="starHeart">星心笔</button>
+              <button type="button" class="tool-button" data-tool="brush">彩色画笔</button>
+              <button type="button" class="tool-button" data-tool="marker">马克笔</button>
+              <button type="button" class="tool-button" data-tool="highlighter">荧光笔</button>
+              <button type="button" class="tool-button" data-tool="eraser">橡皮擦</button>
+            </div>
+            <div class="field-group">
+              <label>预设颜色（画笔专用）</label>
+              <div class="color-swatches" role="group" aria-label="画笔颜色">
+                <button
+                  type="button"
+                  class="color-swatch active"
+                  data-color="#ff4b6e"
+                  aria-label="暖粉色"
+                ></button>
+                <button
+                  type="button"
+                  class="color-swatch"
+                  data-color="#ff9e59"
+                  aria-label="柑橘橙"
+                ></button>
+                <button
+                  type="button"
+                  class="color-swatch"
+                  data-color="#3ad1b3"
+                  aria-label="薄荷绿"
+                ></button>
+                <button
+                  type="button"
+                  class="color-swatch"
+                  data-color="#6b5bff"
+                  aria-label="星空蓝"
+                ></button>
+                <button
+                  type="button"
+                  class="color-swatch"
+                  data-color="#ffd6e6"
+                  aria-label="浅樱粉"
+                ></button>
               </div>
-              <div class="field-group">
-                <label for="sizeSlider">粗细</label>
-                <input
-                  id="sizeSlider"
-                  type="range"
-                  min="6"
-                  max="48"
-                  step="2"
-                  value="20"
-                  aria-valuemin="6"
-                  aria-valuemax="48"
-                  aria-valuenow="20"
-                  aria-label="笔刷粗细"
-                />
+            </div>
+            <div class="field-group">
+              <label>粗细（画笔 / 橡皮擦）</label>
+              <div class="size-options" role="group" aria-label="笔触粗细">
+                <button type="button" class="size-option active" data-size="12">
+                  <span class="size-dot"></span>
+                  细
+                </button>
+                <button type="button" class="size-option" data-size="24">
+                  <span class="size-dot"></span>
+                  中
+                </button>
+                <button type="button" class="size-option" data-size="40">
+                  <span class="size-dot"></span>
+                  粗
+                </button>
               </div>
             </div>
             <div class="button-group compact">
@@ -94,26 +200,146 @@
               <button id="clearDoodle" type="button">清空涂鸦</button>
             </div>
           </div>
+
+          <div class="card text-card">
+            <div class="card-header">
+              <h2>节日文案</h2>
+              <p>选择字体与颜色后，点击“放置文本”并在画布上点选位置。</p>
+            </div>
+            <div class="field-group">
+              <label for="textContent">文案内容</label>
+              <textarea
+                id="textContent"
+                rows="2"
+                placeholder="例如：生日快乐，一起许愿吧！"
+              ></textarea>
+            </div>
+            <div class="field-row">
+              <div class="field-group">
+                <label for="fontSelect">字体样式</label>
+                <select id="fontSelect" aria-label="文本字体"></select>
+              </div>
+              <div class="field-group">
+                <label for="textColor">文本颜色</label>
+                <input id="textColor" type="color" value="#1b1b2f" />
+              </div>
+            </div>
+            <div class="field-group">
+              <label for="textSize">文本大小</label>
+              <input
+                id="textSize"
+                type="range"
+                min="32"
+                max="120"
+                step="4"
+                value="64"
+                aria-label="文本大小"
+              />
+            </div>
+            <div class="button-group compact">
+              <button id="placeText" type="button">点击画布放置</button>
+            </div>
+            <p class="hint-text">小提示：支持换行，可多次添加不同文案。</p>
+          </div>
+
+          <div class="card sticker-card">
+            <div class="card-header">
+              <h2>节日贴纸库</h2>
+              <p>六大主题共 150 枚贴纸，覆盖生日、新年、纪念日与四季祝福。</p>
+            </div>
+            <div class="sticker-tabs" role="tablist" aria-label="贴纸主题">
+              <button
+                type="button"
+                class="sticker-tab active"
+                data-sticker-category="birthday"
+              >生日祝福</button>
+              <button
+                type="button"
+                class="sticker-tab"
+                data-sticker-category="newYear"
+              >新年喜庆</button>
+              <button
+                type="button"
+                class="sticker-tab"
+                data-sticker-category="anniversary"
+              >纪念日闪耀</button>
+              <button
+                type="button"
+                class="sticker-tab"
+                data-sticker-category="party"
+              >派对狂欢</button>
+              <button
+                type="button"
+                class="sticker-tab"
+                data-sticker-category="blessing"
+              >温暖祝福</button>
+              <button
+                type="button"
+                class="sticker-tab"
+                data-sticker-category="seasonal"
+              >四季节庆</button>
+            </div>
+            <div class="field-group">
+              <label for="stickerSize">贴纸大小</label>
+              <input
+                id="stickerSize"
+                type="range"
+                min="140"
+                max="320"
+                step="10"
+                value="220"
+                aria-label="贴纸大小"
+              />
+            </div>
+            <div class="sticker-list" id="stickerList" role="listbox" aria-label="节日贴纸"></div>
+            <div class="button-group compact">
+              <button id="exitStickerMode" type="button" class="secondary">退出贴纸放置</button>
+            </div>
+          </div>
         </section>
 
         <section class="panel canvas-panel" aria-label="画布舞台">
           <div class="canvas-wrapper" id="canvasWrapper">
-            <canvas id="photoCanvas" aria-label="照片画布" role="img"></canvas>
-            <canvas
-              id="doodleCanvas"
-              aria-label="涂鸦画布"
-              role="presentation"
-            ></canvas>
-            <div class="canvas-placeholder" id="canvasPlaceholder">
-              <p>
-                先拍一张照片或上传图片，再用星星和爱心点亮画面吧！
-              </p>
+            <div class="canvas-stage" id="canvasStage">
+              <canvas id="photoCanvas" aria-label="照片画布" role="img"></canvas>
+              <canvas
+                id="doodleCanvas"
+                aria-label="涂鸦画布"
+                role="presentation"
+              ></canvas>
+              <div class="canvas-placeholder" id="canvasPlaceholder">
+                <p>
+                  登录后拍摄或上传照片，再用星星、画笔、文字与贴纸点亮画面吧！
+                </p>
+              </div>
             </div>
           </div>
           <div class="canvas-actions">
-            <button id="exportImage" type="button">导出 PNG</button>
+            <div class="view-controls" aria-label="画布视图控制">
+              <div class="view-zoom">
+                <button id="zoomOut" type="button" class="secondary" aria-label="缩小画布">−</button>
+                <input
+                  id="zoomSlider"
+                  type="range"
+                  min="50"
+                  max="200"
+                  step="5"
+                  value="100"
+                  aria-label="缩放比例"
+                />
+                <button id="zoomIn" type="button" aria-label="放大画布">＋</button>
+              </div>
+              <div class="view-actions">
+                <button id="resetView" type="button" class="secondary">重置视图</button>
+                <button id="togglePan" type="button" class="secondary" aria-pressed="false">平移模式</button>
+              </div>
+              <p class="hint-text">
+                提示：按住空格或启用平移模式即可拖动画布，鼠标滚轮也可缩放。
+              </p>
+            </div>
+            <button id="exportImage" type="button">导出 1080p PNG</button>
             <p class="hint-text">
-              小提示：在触屏设备上也可以直接用手指绘制；长按导出图片即可分享。
+              小提示：作品导出为 1920×1080 PNG，无水印，可直接分享。
             </p>
           </div>
         </section>
