@@ -515,7 +515,7 @@ function updateAuthUI() {
     elements.authWelcome.textContent = formatUserWelcome(authState.currentUser);
   }
   updateAuthMode();
-  elements.uploadInput.disabled = !authed;
+  elements.uploadInput.disabled = false;
   elements.placeText.disabled = !authed && !state.pendingText;
   elements.stickerSize.disabled = !authed;
   elements.exitStickerMode.disabled = !authed || state.mode !== 'sticker';
@@ -1919,6 +1919,7 @@ function clamp(value, min, max) {
 }
 
 init();
+
 
 
 
