@@ -377,8 +377,6 @@ const state = {
   size: DEFAULT_SIZE,
   isDrawing: false,
   hasPhoto: false,
-  cameraStream: null,
-  cameraReady: false,
   lastPoint: null,
   lastStampPoint: null,
   shapeToggle: true,
@@ -407,12 +405,6 @@ const authState = {
 };
 
 const elements = {
-  video: document.getElementById('cameraPreview'),
-  status: document.getElementById('cameraStatus'),
-  overlay: document.getElementById('cameraOverlay'),
-  startCamera: document.getElementById('startCamera'),
-  capturePhoto: document.getElementById('capturePhoto'),
-  stopCamera: document.getElementById('stopCamera'),
   uploadInput: document.getElementById('uploadInput'),
   toolButtons: Array.from(document.querySelectorAll('.tool-button')),
   colorButtons: Array.from(document.querySelectorAll('.color-swatch')),
@@ -475,7 +467,6 @@ function init() {
   updateStickerMode(true);
   updateTextButton();
   updatePlaceholder();
-  updateCameraControls();
   updatePanStateClasses();
   announce('请登录后开启相机或上传照片。');
 }
@@ -496,25 +487,6 @@ function configureCanvases() {
 }
 
 function bindEvents() {
-  elements.startCamera.addEventListener('click', () => {
-    if (!ensureAuthenticated()) {
-      return;
-    }
-    startCamera().catch(() => {
-      /* 提示已在 startCamera 内处理 */
-    });
-  });
-  elements.stopCamera.addEventListener('click', () => {
-    if (!ensureAuthenticated()) {
-      return;
-    }
-    stopCamera();
-  });
-  elements.capturePhoto.addEventListener('click', () => {
-    if (!ensureAuthenticated()) {
-      return;
-    }
-    capturePhoto();
   });
   elements.uploadInput.addEventListener('change', handleUpload);
 
@@ -680,12 +652,6 @@ function bindEvents() {
   window.addEventListener('keyup', (event) => {
     if (event.code === 'Space') {
       handleSpaceUp(event);
-    }
-  });
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      stopCamera();
     }
   });
 }
@@ -884,7 +850,6 @@ function updateAuthUI() {
   renderStickerList();
   updateStickerMode(true);
   updateTextButton();
-  updateCameraControls();
   updateViewControls();
   renderProjectList();
   if (!authed) {
@@ -1414,17 +1379,7 @@ function handleSocialSignIn(providerKey) {
   );
 }
 
-function isCameraSupported() {
-  return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
-}
 
-function updateCameraControls() {
-  const active = Boolean(state.cameraStream);
-  const locked = !authState.isAuthenticated;
-  elements.startCamera.disabled = locked || active;
-  elements.stopCamera.disabled = locked || !active;
-  elements.capturePhoto.disabled = locked || !state.cameraReady;
-}
 
 async function startCamera() {
   if (!isCameraSupported()) {
@@ -1458,61 +1413,12 @@ async function startCamera() {
     stopCamera();
     throw error;
   } finally {
-    updateCameraControls();
   }
 }
 
-function disableCameraControls() {
-  elements.startCamera.disabled = true;
-  elements.capturePhoto.disabled = true;
-  elements.stopCamera.disabled = true;
-}
 
-function stopCamera() {
-  if (state.cameraStream) {
-    state.cameraStream.getTracks().forEach((track) => track.stop());
-    state.cameraStream = null;
-  }
-  if (elements.video.srcObject) {
-    elements.video.srcObject = null;
-  }
-  state.cameraReady = false;
-  showOverlay('已关闭摄像头，如需重新拍摄请点击“开启相机”。');
-  updateCameraControls();
-}
 
-function playVideo(videoElement) {
-  return new Promise((resolve, reject) => {
-    const cleanup = () => {
-      videoElement.removeEventListener('loadeddata', onLoaded);
-      videoElement.removeEventListener('error', onError);
-    };
-    const onLoaded = () => {
-      cleanup();
-      resolve();
-    };
-    const onError = (error) => {
-      cleanup();
-      reject(error);
-    };
-    videoElement.addEventListener('loadeddata', onLoaded, { once: true });
-    videoElement.addEventListener('error', onError, { once: true });
-    const playPromise = videoElement.play();
-    if (playPromise && typeof playPromise.catch === 'function') {
-      playPromise.catch(onError);
-    }
-  });
-}
 
-function capturePhoto() {
-  if (!state.cameraReady || !elements.video.videoWidth) {
-    announce('摄像头尚未准备就绪，请稍候或重新开启。');
-    return;
-  }
-  drawSourceToPhoto(elements.video, elements.video.videoWidth, elements.video.videoHeight);
-  resetDoodleCanvas();
-  announce('已捕捉当前画面，快来绘制你的祝福吧！');
-}
 
 function handleUpload(event) {
   const [file] = event.target.files;
@@ -2447,32 +2353,7 @@ function clamp(value, min, max) {
 
 init();
 
-// --- Camera-free overrides and safe guards ---
-// In the new flow we only support photo upload; camera APIs are no-ops.
-function isCameraSupported() {
-  return false;
-}
-function updateCameraControls() {
-  if (elements && elements.startCamera) elements.startCamera.disabled = true;
-  if (elements && elements.capturePhoto) elements.capturePhoto.disabled = true;
-  if (elements && elements.stopCamera) elements.stopCamera.disabled = true;
-}
-async function startCamera() {
-  announce('当前版本仅支持上传照片进行创作');
-  return Promise.resolve();
-}
-function stopCamera() {}
-function playVideo() {}
-function capturePhoto() {}
-
-// Announce/overlay fallbacks when camera UI is absent
-function announce(message) {
-  try {
-    if (authState && authState.isAuthenticated && elements && elements.authMessage) {
-      elements.authMessage.textContent = String(message);
-    }
-  } catch {}
-}
+// Status helpers
 function hideOverlay() {
   try {
     if (elements && elements.overlay) elements.overlay.classList.add('hidden');
@@ -2486,4 +2367,8 @@ function showOverlay(message) {
     }
   } catch {}
 }
+
+
+
+
 
