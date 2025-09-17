@@ -1,4 +1,4 @@
-const CANVAS_WIDTH = 1920;
+﻿const CANVAS_WIDTH = 1920;
 const CANVAS_HEIGHT = 1080;
 const MAX_HISTORY = 25;
 const AUTH_USERS_KEY = 'photo-doodle-users';
@@ -837,7 +837,7 @@ function updateAuthUI() {
     elements.authWelcome.textContent = formatUserWelcome(authState.currentUser);
   }
   updateAuthMode();
-  elements.uploadInput.disabled = !authed;
+  elements.uploadInput.disabled = false;
   elements.placeText.disabled = !authed && !state.pendingText;
   elements.stickerSize.disabled = !authed;
   elements.exitStickerMode.disabled = !authed || state.mode !== 'sticker';
@@ -1516,10 +1516,7 @@ function capturePhoto() {
 
 function handleUpload(event) {
   const [file] = event.target.files;
-  if (!ensureAuthenticated()) {
-    event.target.value = '';
-    return;
-  }
+  
   if (!file) {
     return;
   }
@@ -2489,3 +2486,4 @@ function showOverlay(message) {
     }
   } catch {}
 }
+
