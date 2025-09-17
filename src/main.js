@@ -16,7 +16,7 @@ const ZOOM_STEP = 0.12;
 const FONT_OPTIONS = [
   {
     value: 'noto-sans',
-    label: '绠€绾﹂粦浣?,
+    label: 'Noto Sans SC',
     stack: '"Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif',
     weight: '700',
   },
@@ -40,7 +40,7 @@ const FONT_OPTIONS = [
   },
   {
     value: 'calligraphy',
-    label: '琛屼功椋?,
+    label: '行书',
     stack: '"KaiTi", "STKaiti", serif',
     weight: '700',
   },
@@ -64,13 +64,13 @@ const FONT_OPTIONS = [
   },
   {
     value: 'bubble-fun',
-    label: '绔ヨ叮娉℃场浣?,
+    label: '童趣泡泡',
     stack: '"Baloo 2", "Comic Sans MS", cursive',
     weight: '700',
   },
   {
     value: 'mono-type',
-    label: '鎵撳瓧鏈?,
+    label: '打字机',
     stack: '"Courier New", monospace',
     weight: '700',
   },
@@ -1915,6 +1915,8 @@ function clamp(value, min, max) {
 }
 
 init();
+
+
 
 
 
