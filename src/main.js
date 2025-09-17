@@ -1,9 +1,9 @@
 ﻿import { createUI } from './ui.mjs';
+import { AUTH_USERS_KEY, AUTH_ACTIVE_KEY, SOCIAL_PROVIDERS, loadUsers, saveUsers } from './auth.mjs';
+import { loadProjectStore, saveProjectStore, loadProjectsForUser, saveProjectsForUser, normalizeProject, serializeProject, formatProjectTimestamp } from './projects.mjs';
 const CANVAS_WIDTH = 1920;
 const CANVAS_HEIGHT = 1080;
 const MAX_HISTORY = 25;
-const AUTH_USERS_KEY = 'photo-doodle-users';
-const AUTH_ACTIVE_KEY = 'photo-doodle-active-user';
 const PROJECT_STORE_KEY = 'photo-doodle-projects';
 const MAX_PROJECTS = 10;
 const DEFAULT_COLOR = '#ff4b6e';
@@ -12,15 +12,6 @@ const DEFAULT_ZOOM = 1;
 const MIN_ZOOM = 0.5;
 const MAX_ZOOM = 2;
 const ZOOM_STEP = 0.12;
-
-const SOCIAL_PROVIDERS = {
-  google: {
-    label: 'Google',
-  },
-  apple: {
-    label: 'Apple',
-  },
-};
 
 const FONT_OPTIONS = [
   {
@@ -899,12 +890,6 @@ function signOut() {
   updateAuthUI();
 }
 
-function loadUsers() {
-  try {
-    const raw = localStorage.getItem(AUTH_USERS_KEY);
-    if (!raw) {
-      return [];
-    }
     const data = JSON.parse(raw);
     if (Array.isArray(data)) {
       return data.map(normalizeUser).filter(Boolean);
@@ -915,19 +900,8 @@ function loadUsers() {
   return [];
 }
 
-function saveUsers(users) {
-  try {
-    const serialized = users.map(serializeUser);
-    localStorage.setItem(AUTH_USERS_KEY, JSON.stringify(serialized));
-  } catch (error) {
-    console.warn('淇濆瓨鐢ㄦ埛鏁版嵁澶辫触锛?, error);
-  }
 }
 
-function normalizeUser(raw) {
-  if (!raw || typeof raw.email !== 'string') {
-    return null;
-  }
   const providers = Array.isArray(raw.providers)
     ? raw.providers.filter((provider) => typeof provider === 'string')
     : [];
@@ -941,23 +915,7 @@ function normalizeUser(raw) {
   };
 }
 
-function serializeUser(user) {
-  return {
-    email: user.email,
-    password: typeof user.password === 'string' ? user.password : null,
-    providers: Array.isArray(user.providers) ? user.providers : [],
-    displayName: user.displayName ?? '',
-    createdAt: typeof user.createdAt === 'number' ? user.createdAt : Date.now(),
-    lastLoginAt: typeof user.lastLoginAt === 'number' ? user.lastLoginAt : Date.now(),
-  };
-}
 
-function loadProjectStore() {
-  try {
-    const raw = localStorage.getItem(PROJECT_STORE_KEY);
-    if (!raw) {
-      return {};
-    }
     const data = JSON.parse(raw);
     if (data && typeof data === 'object') {
       return data;
@@ -968,27 +926,13 @@ function loadProjectStore() {
   return {};
 }
 
-function saveProjectStore(store) {
-  try {
-    localStorage.setItem(PROJECT_STORE_KEY, JSON.stringify(store));
-  } catch (error) {
-    console.warn('淇濆瓨浣滃搧鏁版嵁澶辫触锛?, error);
-  }
 }
 
-function loadProjectsForUser(email) {
-  if (!email) {
-    return [];
-  }
   const store = loadProjectStore();
   const raw = Array.isArray(store[email]) ? store[email] : [];
   return raw.map(normalizeProject).filter(Boolean).sort((a, b) => b.updatedAt - a.updatedAt);
 }
 
-function saveProjectsForUser(email, projects) {
-  if (!email) {
-    return;
-  }
   const store = loadProjectStore();
   store[email] = projects.map(serializeProject);
   saveProjectStore(store);
@@ -1001,10 +945,6 @@ function saveProjectsForCurrentUser() {
   saveProjectsForUser(authState.currentUser.email, state.projects);
 }
 
-function normalizeProject(raw) {
-  if (!raw || typeof raw.id !== 'string') {
-    return null;
-  }
   const view = raw.view && typeof raw.view === 'object' ? raw.view : {};
   return {
     id: raw.id,
@@ -1020,25 +960,7 @@ function normalizeProject(raw) {
   };
 }
 
-function serializeProject(project) {
-  return {
-    id: project.id,
-    name: project.name,
-    photo: project.photo,
-    doodle: project.doodle,
-    updatedAt: project.updatedAt,
-    view: {
-      zoom: project.view?.zoom ?? DEFAULT_ZOOM,
-      offsetX: project.view?.offsetX ?? 0,
-      offsetY: project.view?.offsetY ?? 0,
-    },
-  };
-}
 
-function deriveDisplayName(email) {
-  if (!email) {
-    return '鍒涗綔鑰?;
-  }
   const [name] = email.split('@');
   return name || '鍒涗綔鑰?;
 }
@@ -1259,10 +1181,6 @@ function deleteProject(projectId) {
   }
 }
 
-function formatProjectTimestamp(timestamp) {
-  if (!timestamp) {
-    return '';
-  }
   const diff = Date.now() - timestamp;
   const minute = 60 * 1000;
   const hour = 60 * minute;
@@ -1298,9 +1216,6 @@ function loadImageFromSource(source) {
   });
 }
 
-function validateEmail(email) {
-  return /.+@.+\..+/.test(email);
-}
 
 function ensureAuthenticated() {
   if (authState.isAuthenticated) {
@@ -2333,6 +2248,9 @@ function clamp(value, min, max) {
 }
 
 init();
+
+
+
 
 
 
