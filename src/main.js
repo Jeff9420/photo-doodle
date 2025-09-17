@@ -1,4 +1,5 @@
-﻿const CANVAS_WIDTH = 1920;
+﻿import { createUI } from './ui.mjs';
+const CANVAS_WIDTH = 1920;
 const CANVAS_HEIGHT = 1080;
 const MAX_HISTORY = 25;
 const AUTH_USERS_KEY = 'photo-doodle-users';
@@ -445,6 +446,8 @@ const elements = {
   resetView: document.getElementById('resetView'),
   togglePan: document.getElementById('togglePan'),
 };
+const { announce, updatePlaceholder, highlightPlaceholder } = createUI(elements, state);
+
 
 const photoCanvas = document.getElementById('photoCanvas');
 const photoCtx = photoCanvas.getContext('2d');
@@ -2265,40 +2268,8 @@ function hexToRgba(hex, alpha) {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-function announce(message) {
-  try {
-    const placeholder = elements.canvasPlaceholder;
-    if (!placeholder) return;
-    const p = placeholder.querySelector('p') || placeholder;
-    p.textContent = String(message);
-    placeholder.classList.remove('hidden');
-    placeholder.classList.add('flash');
-    setTimeout(() => {
-      placeholder.classList.remove('flash');
-      if (state.hasPhoto) {
-        placeholder.classList.add('hidden');
-      }
     }, 900);
   } catch {}
-}
-
-function updatePlaceholder() {
-  elements.canvasPlaceholder.classList.toggle('hidden', state.hasPhoto);
-}
-
-function highlightPlaceholder() {
-  elements.canvasPlaceholder.classList.remove('hidden');
-  elements.canvasPlaceholder.classList.add('flash');
-  setTimeout(() => {
-    elements.canvasPlaceholder.classList.remove('flash');
-    updatePlaceholder();
-  }, 900);
-}
-
-
-function announce(message) {
-  elements.overlay.innerHTML = `<p>${message}</p>`;
-  elements.overlay.classList.remove('hidden');
 }
 
 function stampStarHeart(point, forceStar = false) {
@@ -2362,6 +2333,9 @@ function clamp(value, min, max) {
 }
 
 init();
+
+
+
 
 
 
